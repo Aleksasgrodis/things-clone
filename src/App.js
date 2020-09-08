@@ -5,6 +5,7 @@ import { addTodo } from './redux/actions';
 import ProjectView from './components/ProjectView';
 
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
+import AreaView from './components/AreaView';
 function App(props) {
   return (
     <Router>
@@ -46,7 +47,7 @@ function App(props) {
           <h2>trash</h2>
         </Route>
         <Route path="/area/:areaID">
-          <h2>area</h2>
+          <AreaView />
         </Route>
         <Route path="/project/:projectID">
           <ProjectView />

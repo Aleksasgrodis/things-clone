@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/actions';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -16,6 +16,7 @@ function NewTask(props) {
         id: taskId,
         createdAt: createdAt,
         heading: heading,
+        title: 'Dummy title',
         parent: parent,
       }),
     );
