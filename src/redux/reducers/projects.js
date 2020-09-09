@@ -48,6 +48,18 @@ export default function (state = initialState, action) {
         },
       ];
     }
+    case Types.EDIT_PROJECT: {
+      return state.map(project => {
+        if(project.id === action.id) {
+          return {
+            ...project,
+            title: action.title ? action.title : project.title,
+            parent: action.parent ? action.parent : project.parent
+          }
+        }
+        return project;
+      })
+    }
     case Types.ADD_HEADING: {
       return state.map(project => {
         if (project.id === action.parent) {

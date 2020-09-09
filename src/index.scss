@@ -234,7 +234,11 @@ code {
           }
           header {
             margin-top: 40px;
-            h2 {
+            .input-title{
+              color: white;
+              background: transparent;
+              border: none;
+              outline: none;
               font-size: 2em;
               font-weight: 500;
             }
@@ -253,7 +257,11 @@ code {
           }
           header {
             margin-top: 40px;
-            h2 {
+            .input-title{
+              color: white;
+              background: transparent;
+              border: none;
+              outline: none;
               font-size: 2em;
               font-weight: 500;
             }

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import NewTask from './NewTask';
 import NewHeading from './NewHeading';
+import { editArea, editProject } from '../redux/actions';
 
 const selectProjectWithId = createSelector(
   state => state.projects,
@@ -20,6 +21,7 @@ const selectTasksOfProject = createSelector(
 function ProjectView(props) {
   const { projectID } = useParams();
   const [selectedHeading, setSelectedHeading] = useState(null);
+  const dispatch = useDispatch();
   const projectTasks = useSelector(state =>
     selectTasksOfProject(state, projectID),
   );
@@ -30,8 +32,14 @@ function ProjectView(props) {
     <div className="content">
       <div className="project">
         <header>
-
-        <h2>{title}</h2>
+        <input
+            className="input-title"
+              type="text"
+              name="title"
+              placeholder="New Project"
+              value={title}
+              onChange={e => dispatch(editProject({id: projectID, title: (e.target.value)}))}
+            />
         </header>
         <span>{tags}</span>
         <span>{notes}</span>
