@@ -32,18 +32,27 @@ function ProjectView(props) {
     <div className="content">
       <div className="project">
         <header>
-        <input
+          <input
             className="input-title"
-              type="text"
-              name="title"
-              placeholder="New Project"
-              value={title}
-              onChange={e => dispatch(editProject({id: projectID, title: (e.target.value)}))}
-            />
+            type="text"
+            name="title"
+            placeholder="New Project"
+            value={title}
+            onChange={e =>
+              dispatch(editProject({ id: projectID, title: e.target.value }))
+            }
+          />
+          <textarea
+            className="input-notes"
+            placeholder="Notes"
+            value={notes}
+            onChange={e =>
+              dispatch(editProject({ id: projectID, notes: e.target.value }))
+            }
+          />
         </header>
         <span>{tags}</span>
-        <span>{notes}</span>
-        {headings.length && headings.map(a => <p>{a.title}</p>)}
+        {headings.length ?  headings.map(a => <p>{a.title}</p>) : null}
         {projectTasks.map(({ title, id }) => (
           <p key={id}>{title}</p>
         ))}

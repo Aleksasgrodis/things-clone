@@ -44,21 +44,22 @@ export default function (state = initialState, action) {
           createdAt: action.createdAt,
           parent: action.parent,
           title: action.title,
-          headings: []
+          headings: [],
         },
       ];
     }
     case Types.EDIT_PROJECT: {
       return state.map(project => {
-        if(project.id === action.id) {
+        if (project.id === action.id) {
           return {
             ...project,
-            title: action.title ? action.title : project.title,
-            parent: action.parent ? action.parent : project.parent
-          }
+            title: action.title,
+            parent: action.parent ? action.parent : project.parent,
+            notes: action.notes,
+          };
         }
         return project;
-      })
+      });
     }
     case Types.ADD_HEADING: {
       return state.map(project => {

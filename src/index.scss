@@ -158,7 +158,7 @@ code {
           &.item {
             svg {
               width: 25px;
-              font-size:1.1em;
+              font-size: 1.1em;
               &.inbox {
                 color: rgb(0, 175, 244);
               }
@@ -197,7 +197,6 @@ code {
           &.spacing {
             margin-bottom: 10px;
           }
-        
         }
       }
       .actionables {
@@ -234,13 +233,29 @@ code {
           }
           header {
             margin-top: 40px;
-            .input-title{
+            .input-title {
               color: white;
               background: transparent;
               border: none;
               outline: none;
-              font-size: 2em;
-              font-weight: 500;
+              font-size: 1.6em;
+              font-weight: 700;
+            }
+            .input-notes {
+              color: white;
+              background: transparent;
+              border: none;
+              outline: none;
+              font-size: 0.9em;
+              font-weight: 600;
+              width: 100%;
+              min-height: 5em;
+              max-height: 50vh;
+              font-family: inherit;
+              &::-webkit-scrollbar {
+                width: 0 !important;
+              }
+              resize: none;
             }
           }
         }
@@ -257,7 +272,7 @@ code {
           }
           header {
             margin-top: 40px;
-            .input-title{
+            .input-title {
               color: white;
               background: transparent;
               border: none;
