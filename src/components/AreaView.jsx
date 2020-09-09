@@ -35,12 +35,23 @@ function AreaView(props) {
   );
 
   return (
-    <div>
-      <h2>{areaID}</h2>
-      <h1> {title} </h1>
+    <div className="content">
+      <div className="area">
+      <header>
+
+        <h2>{title}</h2>
+      </header>
       {projects.map(({title, id}) => (<Link to={`/project/${id}`} key={id}><p>{title}</p></Link>))}
       {tasks.map(({title, id}) => (<p key={id}>{title}</p>))}
-      <NewTask parent={areaID} />
+      
+      asdsad
+    </div>
+    <div className="actionables">
+        
+    <NewTask parent={areaID} />
+        <p>s</p>
+        <p>s</p>
+      </div>
     </div>
   );
 }

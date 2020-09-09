@@ -13,26 +13,26 @@ import AreaView from './components/AreaView';
 function App(props) {
   return (
     <Router>
-      <div className="container h-screen flex mx-auto justify-center items-center">
-        <div className="min-h-3/4 max-h-3/4 w-full rounded-md bg-gray-800 text-white grid grid-cols-5 overflow-hidden">
-          <div className="container pt-6 pl-6 bg-gray-900 h-full w-full col-start-1 grid grid-rows-6">
-            <div className="flex flex-col row-span-6 overflow-y-scroll">
-              <NavLink to="/">Inbox</NavLink>
-              <NavLink to="/today">Today</NavLink>
-              <NavLink to="/upcoming">Upcoming</NavLink>
-              <NavLink to="/anytime">Anytime</NavLink>
-              <NavLink to="/someday">Someday</NavLink>
-              <NavLink to="/logbook">Logbook</NavLink>
-              <NavLink to="/trash">Trash</NavLink>
-              <NavLink to="/area/12233323">AreaX</NavLink>
-              <NavLink to="/project/123323">ProjectX</NavLink>
+      <div className="wrapper">
+        <div className="dashboard">
+          <div className="sidebar">
+            <div className="list">
+              <NavLink exact activeClassName="active" className="spacing" to="/">Inbox</NavLink>
+              <NavLink activeClassName="active" to="/today">Today</NavLink>
+              <NavLink activeClassName="active" to="/upcoming">Upcoming</NavLink>
+              <NavLink activeClassName="active" to="/anytime">Anytime</NavLink>
+              <NavLink activeClassName="active" className="spacing" to="/someday">Someday</NavLink>
+              <NavLink activeClassName="active" to="/logbook">Logbook</NavLink>
+              <NavLink activeClassName="active" className="spacing" to="/trash">Trash</NavLink>
+              <NavLink activeClassName="active" to="/area/12233323">AreaX</NavLink>
+              <NavLink activeClassName="active" to="/project/123323">ProjectX</NavLink>
             </div>
-            <div className="row-span-1">
+            <div className="actionables">
               <button>new project</button>
               <button>new area</button>
             </div>
           </div>
-          <div className="h-full bg-gray-800 flex flex-col p-6 text-white col-span-4">
+          <div className="content-wrapper">
             <Switch>
               <Route exact path="/">
                 <h2>inbox</h2>

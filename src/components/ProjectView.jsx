@@ -27,16 +27,26 @@ function ProjectView(props) {
     selectProjectWithId(state, projectID),
   );
   return (
-    <div>
-      <h2>{title}</h2>
-      <span>{tags}</span>
-      <span>{notes}</span>
-      {headings.length && headings.map(a => (<p>{a.title}</p>))}
-      {projectTasks.map(({ title, id }) => (
-        <p key={id}>{title}</p>
-      ))}
-      <NewTask parent={projectID} heading={selectedHeading} />
-      <NewHeading parent={projectID} />
+    <div className="content">
+      <div className="project">
+        <header>
+
+        <h2>{title}</h2>
+        </header>
+        <span>{tags}</span>
+        <span>{notes}</span>
+        {headings.length && headings.map(a => <p>{a.title}</p>)}
+        {projectTasks.map(({ title, id }) => (
+          <p key={id}>{title}</p>
+        ))}
+      </div>
+      <div className="actionables">
+        <NewTask parent={projectID} heading={selectedHeading} />
+        <NewHeading parent={projectID} />
+        <p>s</p>
+        <p>s</p>
+        <p>s</p>
+      </div>
     </div>
   );
 }
