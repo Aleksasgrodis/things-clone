@@ -14,6 +14,17 @@ export default function (state = initialState, action) {
         },
       ];
     }
+    case Types.EDIT_AREA: {
+      return state.map(area => {
+        if(area.id === action.id) {
+          return {
+            ...area,
+            title: action.title
+          }
+        }
+        return area;
+      })
+    }
 
     default:
       return state;
