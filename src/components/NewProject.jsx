@@ -1,13 +1,29 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { addTodo } from '../redux/actions';
+import { useDispatch } from 'react-redux';
+import { addProject } from '../redux/actions';
 import { v4 as uuidv4 } from 'uuid';
+import { useHistory } from 'react-router-dom';
 
 function NewProject(props) {
+  const dispatch = useDispatch();
+  const { parent, heading } = props;
+  const history = useHistory();
   const handleNewProject = () => {
-
-  }
-  return <div>erer</div>;
+    const projectId = uuidv4(),
+      createdAt = Date.now();
+      dispatch(addProject({
+        id: projectId,
+        createdAt,
+        parent,
+        title: 'Dummy Prject Title'
+      }))
+      history.push(`/project/${projectId}`)
+  };  
+  return (
+    <div>
+      <button onClick={() => handleNewProject()}>New Project</button>
+    </div>
+  );
 }
 
-export default connect(null, { addTodo })(NewProject);
+export default NewProject;

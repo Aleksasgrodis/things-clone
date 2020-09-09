@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import NewTask from './NewTask';
+import NewProject from './NewProject';
 
 const selectAreaWithId = createSelector(
   state => state.areas,
@@ -49,7 +50,7 @@ function AreaView(props) {
     <div className="actionables">
         
     <NewTask parent={areaID} />
-        <p>s</p>
+        <NewProject parent={areaID} />
         <p>s</p>
       </div>
     </div>

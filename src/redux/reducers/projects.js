@@ -25,6 +25,8 @@ export default function (state = initialState, action) {
           id: action.id,
           createdAt: action.createdAt,
           parent: action.parent,
+          title: action.title,
+          headings: []
         },
       ];
     }
