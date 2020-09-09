@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import NewTask from './NewTask';
+import NewHeading from './NewHeading';
 
 const selectProjectWithId = createSelector(
   state => state.projects,
@@ -30,11 +31,12 @@ function ProjectView(props) {
       <h2>{title}</h2>
       <span>{tags}</span>
       <span>{notes}</span>
-      {headings}
+      {headings.length && headings.map(a => (<p>{a.title}</p>))}
       {projectTasks.map(({ title, id }) => (
         <p key={id}>{title}</p>
       ))}
       <NewTask parent={projectID} heading={selectedHeading} />
+      <NewHeading parent={projectID} />
     </div>
   );
 }

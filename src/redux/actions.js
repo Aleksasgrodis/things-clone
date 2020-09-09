@@ -21,3 +21,10 @@ export const addArea = ({ id, createdAt }) => ({
   id,
   createdAt,
 });
+
+export const addHeading = ({ id, parent, title }) => ({
+  type: types.ADD_HEADING,
+  id,
+  parent,
+  title
+});

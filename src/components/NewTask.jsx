@@ -16,7 +16,7 @@ function NewTask(props) {
         id: taskId,
         createdAt: createdAt,
         heading: heading,
-        title: 'Dummy title',
+        title: 'Dummy Task',
         parent: parent,
       }),
     );
