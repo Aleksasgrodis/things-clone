@@ -4,13 +4,11 @@ import { addTodo } from '../redux/actions';
 import { v4 as uuidv4 } from 'uuid';
 
 function NewTask(props) {
-  // create id on render or on click?
   const dispatch = useDispatch();
   const handleNewTask = () => {
     const taskId = uuidv4(),
       createdAt = Date.now();
     const { parent, heading } = props;
-    console.log(parent);
     dispatch(
       addTodo({
         id: taskId,
