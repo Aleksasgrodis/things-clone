@@ -10,6 +10,7 @@ export default function (state = initialState, action) {
         {
           id: action.id,
           createdAt: action.createdAt,
+          title: action.title
         },
       ];
     }

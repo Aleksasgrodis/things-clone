@@ -17,10 +17,11 @@ export const addProject = ({ id, createdAt, title, parent }) => ({
   title,
 });
 
-export const addArea = ({ id, createdAt }) => ({
-  type: types.ADD_PROJECT,
+export const addArea = ({ id, createdAt, title }) => ({
+  type: types.ADD_AREA,
   id,
   createdAt,
+  title
 });
 
 export const addHeading = ({ id, parent, title }) => ({

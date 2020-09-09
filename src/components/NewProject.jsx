@@ -15,7 +15,7 @@ function NewProject(props) {
         id: projectId,
         createdAt,
         parent,
-        title: 'Dummy Prject Title'
+        title: 'New Project'
       }))
       history.push(`/project/${projectId}`)
   };  
