@@ -119,7 +119,7 @@ code {
     border: 1px solid #fff;
     overflow: hidden;
     .sidebar {
-      width: 25%;
+      width: 35%;
       height: 100%;
       position: relative;
       border-right: 1px solid rgb(26, 27, 28);
@@ -139,6 +139,12 @@ code {
         &::-webkit-scrollbar {
           width: 0 !important;
         }
+        .project-bundle {
+          margin-bottom: 10px;
+          margin-top: 10px;
+          display: flex;
+          flex-direction: column;
+        }
         a {
           color: white;
           text-decoration-line: none;
@@ -147,6 +153,39 @@ code {
           font-weight: 600;
           padding: 2px 4px;
           border-radius: 4px;
+          &.item {
+            svg {
+              width: 25px;
+              font-size:1.1em;
+              &.inbox {
+                color: rgb(0, 175, 244);
+              }
+              &.today {
+                color: rgb(255, 211, 59);
+              }
+              &.upcoming {
+                color: rgb(255, 52, 108);
+              }
+              &.anytime {
+                color: rgb(45, 175, 165);
+              }
+              &.someday {
+                color: rgb(213, 198, 146);
+              }
+              &.logbook {
+                color: rgb(45, 189, 102);
+              }
+              &.trash {
+                color: rgb(194, 200, 205);
+              }
+            }
+            .title {
+              margin-left: 3px;
+            }
+            &.thin {
+              font-weight: 400;
+            }
+          }
           &.active {
             background: rgb(60, 63, 65);
           }
@@ -156,6 +195,7 @@ code {
           &.spacing {
             margin-bottom: 10px;
           }
+        
         }
       }
       .actionables {

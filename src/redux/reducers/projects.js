@@ -1,17 +1,35 @@
 import * as Types from '../actionTypes';
 
 const initialState = [
-  { id: '123323', title: 'I am a test project!', headings: [] },
+  { id: '123323', title: 'Project 1', headings: [] },
   {
     id: '123325',
-    title: 'Im a project of an Area1',
+    title: 'Project 1',
     parent: '12233323',
     headings: [],
   },
   {
     id: '123326',
-    title: 'Im a different project of an Area2',
+    title: 'Project 2',
     parent: '12233323',
+    headings: [],
+  },
+  {
+    id: '12332326',
+    title: 'Project 1',
+    parent: '1323',
+    headings: [],
+  },
+  {
+    id: '1262326',
+    title: 'Project 2',
+    parent: '1323',
+    headings: [],
+  },
+  {
+    id: '16032326',
+    title: 'Project 3',
+    parent: '1323',
     headings: [],
   },
 ];
