@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { connect } from 'react-redux';
 import { addTodo } from './redux/actions';
 import ProjectView from './components/ProjectView';
