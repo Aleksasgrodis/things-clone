@@ -63,8 +63,8 @@ function ProjectView(props) {
         <div className="tasks">
           {standaloneTasks.map(({ title, id }) => (
             <div className="task">
-              <input type="checkbox" name="" id="" />
-              <p key={id}>{title}</p>
+              <input type="checkbox" className="checkbox" name="task" id="" />
+              <label htmlFor="task" key={id}>{title}</label>
             </div>
           ))}
         </div>

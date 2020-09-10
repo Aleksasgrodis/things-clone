@@ -236,6 +236,19 @@ code {
             flex-direction: column;
             .task {
               display: flex;
+              
+              input {
+                &[type="checkbox"] {
+                  background: transparent;
+                  border: 1px solid transparent;
+                  &:checked {
+                    background-color: transparent;
+                  }
+                  &:not(:checked) {
+                    background-color: transparent;
+                  }
+                }
+              }
             }
           }
           .heading {
@@ -247,11 +260,12 @@ code {
             margin-top: 40px;
             font-weight: 800;
             padding: 7px 9px;
+            // margin-left: 9px;
             border-bottom: 1px solid rgba(73, 155, 225, 0.7);
             &.selected {
               border-color: transparent;
-              background:rgb(26, 66, 114);
-              
+              background: rgb(26, 66, 114);
+
               border-radius: 4px;
             }
           }
