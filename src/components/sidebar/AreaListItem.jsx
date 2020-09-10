@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBoxOpen, faCircle } from '@fortawesome/free-solid-svg-icons';
+import ProjectListItem from './ProjectListItem';
 
 function AreaListItem(props) {
   const [collapsed, setCollapsed] = useState(false);
@@ -23,15 +24,7 @@ function AreaListItem(props) {
       <div style={{ display: collapsed ? 'none' : 'contents' }}>
         {props.children && props.children.length
           ? props.children.map(c => (
-              <NavLink
-                key={c.id}
-                activeClassName="active"
-                className="item thin"
-                to={`/project/${c.id}`}
-              >
-                <FontAwesomeIcon icon={faCircle} />
-                <span className="title">{c.title}</span>
-              </NavLink>
+              <ProjectListItem {...c} />
             ))
           : null}
       </div>

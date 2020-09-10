@@ -20,6 +20,7 @@ import {
   faBoxOpen,
 } from '@fortawesome/free-solid-svg-icons';
 import AreaListItem from './sidebar/AreaListItem';
+import ProjectListItem from './sidebar/ProjectListItem';
 
 const selectAreas = state => (state ? state.areas : []);
 
@@ -76,15 +77,7 @@ function Sidebar() {
         <div className="project-bundle">
           {projects && projectsWithoutParents && projectsWithoutParents.length
             ? projectsWithoutParents.map(p => (
-                <NavLink
-                  key={p.id}
-                  activeClassName="active"
-                  className="item thin"
-                  to={`/project/${p.id}`}
-                >
-                  <FontAwesomeIcon icon={faCircle} />
-                  <span className="title">{p.title}</span>
-                </NavLink>
+                <ProjectListItem {...p} />
               ))
             : null}
         </div>
@@ -93,7 +86,6 @@ function Sidebar() {
             <AreaListItem {...a} />
             ))
           : null}
-          
       </div>
       <div className="actionables">
         <NewProject />
