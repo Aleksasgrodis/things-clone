@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createSelector } from 'reselect';
@@ -28,15 +28,14 @@ function ProjectView(props) {
   const { title, headings, tags, notes } = useSelector(state =>
     selectProjectWithId(state, projectID),
   );
-  // tasks with no headings
   const standaloneTasks = [...projectTasks].filter(t => !t.heading);
-  console.log(standaloneTasks);
-  // headings + headings with tasks
   const headingsWithTasks = [...headings].map(heading => ({
     ...heading,
     tasks: projectTasks.filter(task => task.heading === heading.id),
   }));
-  console.log(headingsWithTasks);
+  useEffect(() => {
+    setSelectedHeading(null)
+  }, [projectID])
   return (
     <div className="content">
       <div className="project">
