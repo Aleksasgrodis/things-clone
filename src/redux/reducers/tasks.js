@@ -48,6 +48,7 @@ export default function (state = initialState, action) {
           return {
             ...task,
             heading: action.heading,
+            parent: action.parent
           };
         }
         return task;

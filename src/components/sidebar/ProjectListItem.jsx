@@ -2,11 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { useDrag } from 'react-dnd';
 
 function ProjectListItem(props) {
-  // requires useDrop to drop tasks and headings into
+  const [collectedProps, drag] = useDrag({
+    item: { id: props.id, type: 'project' },
+  });
   return (
     <NavLink
+      ref={drag}
       key={props.id}
       activeClassName="active"
       className="item thin"

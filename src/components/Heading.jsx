@@ -8,28 +8,26 @@ import { editTodo } from '../redux/actions';
 function Heading(props) {
   const [collectedProps, drop] = useDrop({
     accept: [ItemTypes.TASK],
-    drop: (item) => changeTaskHeader(item),
-    })
-    const dispatch = useDispatch()
-    const changeTaskHeader = ({id}) => {
-      // console.log(item);
-      dispatch(editTodo({id, heading: props.id }));
-    }
+    drop: item => changeTaskHeader(item),
+  });
+  const dispatch = useDispatch();
+  const changeTaskHeader = ({ id }) => {
+    // console.log(item);
+    dispatch(editTodo({ id, heading: props.id }));
+  };
   return (
     <div className="heading-wrapper" ref={drop}>
       <div
-        className={`heading ${props.selectedHeading === props.id ? 'selected' : ''}`}
+        className={`heading ${
+          props.selectedHeading === props.id ? 'selected' : ''
+        }`}
         onClick={() => props.setSelectedHeading(props.id)}
       >
         <p>{props.title}</p>
       </div>
       <div className="tasks">
-      {props.tasks.length
-        ? props.tasks.map(t => (
-              <Task {...t} />
-          ))
-          : null}
-          </div>
+        {props.tasks.length ? props.tasks.map(t => <Task {...t} />) : null}
+      </div>
     </div>
   );
 }

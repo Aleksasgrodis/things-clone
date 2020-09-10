@@ -3,13 +3,40 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBoxOpen, faCircle } from '@fortawesome/free-solid-svg-icons';
 import ProjectListItem from './ProjectListItem';
+import { useDrop } from 'react-dnd';
+import { ItemTypes } from '../Constants';
+import { useDispatch } from 'react-redux';
+import { editTodo, editProject } from '../../redux/actions';
 
 function AreaListItem(props) {
   const [collapsed, setCollapsed] = useState(false);
   // requires useDrop to drop tasks and projects into
+  const [collectedProps, drop] = useDrop({
+    accept: [ItemTypes.TASK, ItemTypes.PROJECT],
+    drop: item => changeItemParent(item),
+  });
+  const dispatch = useDispatch()
+
+  const changeItemParent = item => {
+    if (item.type === 'project') {
+      const { id } = item;
+      console.log('here');
+      console.log('task id: ', id);
+      console.log('parent id: ', props.id);
+      dispatch(editProject({id, parent: props.id}))
+    }
+    if (item.type === 'task') {
+      const { id } = item;
+      console.log('here');
+      console.log('task id: ', id);
+      console.log('parent id: ', props.id);
+      dispatch(editTodo({id, parent: props.id}))
+    }
+  }
   return (
-    <div className="project-bundle">
+    <div className="project-bundle" ref={drop}>
       <NavLink
+      
         key={props.id}
         activeClassName="active"
         className="item"
