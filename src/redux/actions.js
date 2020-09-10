@@ -9,6 +9,14 @@ export const addTodo = ({ id, createdAt, parent, heading, title }) => ({
   heading,
 });
 
+export const editTodo = ({ id, parent, heading, title }) => ({
+  type: types.EDIT_TODO,
+  id,
+  title,
+  parent,
+  heading,
+});
+
 export const addProject = ({ id, createdAt, title, parent }) => ({
   type: types.ADD_PROJECT,
   id,
