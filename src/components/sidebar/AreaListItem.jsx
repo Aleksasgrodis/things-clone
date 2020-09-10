@@ -20,23 +20,17 @@ function AreaListItem(props) {
   const changeItemParent = item => {
     if (item.type === 'project') {
       const { id } = item;
-      console.log('here');
-      console.log('task id: ', id);
-      console.log('parent id: ', props.id);
       dispatch(editProject({id, parent: props.id}))
     }
     if (item.type === 'task') {
       const { id } = item;
-      console.log('here');
-      console.log('task id: ', id);
-      console.log('parent id: ', props.id);
       dispatch(editTodo({id, parent: props.id}))
     }
   }
   return (
-    <div className="project-bundle" ref={drop}>
+    <div className="project-bundle">
       <NavLink
-      
+       ref={drop}
         key={props.id}
         activeClassName="active"
         className="item"

@@ -12,7 +12,6 @@ function Heading(props) {
   });
   const dispatch = useDispatch();
   const changeTaskHeader = ({ id }) => {
-    // console.log(item);
     dispatch(editTodo({ id, heading: props.id }));
   };
   return (
