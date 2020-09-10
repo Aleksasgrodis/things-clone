@@ -19,6 +19,8 @@ import {
   faTrash,
   faBoxOpen,
 } from '@fortawesome/free-solid-svg-icons';
+import AreaListItem from './sidebar/AreaListItem';
+import ProjectListItem from './sidebar/ProjectListItem';
 
 const selectAreas = state => (state ? state.areas : []);
 
@@ -75,45 +77,13 @@ function Sidebar() {
         <div className="project-bundle">
           {projects && projectsWithoutParents && projectsWithoutParents.length
             ? projectsWithoutParents.map(p => (
-                <NavLink
-                  key={p.id}
-                  activeClassName="active"
-                  className="item thin"
-                  to={`/project/${p.id}`}
-                >
-                  <FontAwesomeIcon icon={faCircle} />
-                  <span className="title">{p.title}</span>
-                </NavLink>
+                <ProjectListItem {...p} />
               ))
             : null}
         </div>
-
-        {areasWithChildren && areasWithChildren.length
+          {areasWithChildren && areasWithChildren.length
           ? areasWithChildren.map(a => (
-              <div className="project-bundle">
-                <NavLink
-                  key={a.id}
-                  activeClassName="active"
-                  className="item"
-                  to={`/area/${a.id}`}
-                >
-                  <FontAwesomeIcon icon={faBoxOpen} />
-                  <span className="title">{a.title}</span>
-                </NavLink>
-                {a.children && a.children.length
-                  ? a.children.map(c => (
-                      <NavLink
-                        key={c.id}
-                        activeClassName="active"
-                        className="item thin"
-                        to={`/project/${c.id}`}
-                      >
-                        <FontAwesomeIcon icon={faCircle} />
-                        <span className="title">{c.title}</span>
-                      </NavLink>
-                    ))
-                  : null}
-              </div>
+            <AreaListItem {...a} />
             ))
           : null}
       </div>

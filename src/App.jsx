@@ -11,9 +11,12 @@ import {
 } from 'react-router-dom';
 import AreaView from './components/AreaView';
 import Sidebar from './components/Sidebar';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 function App(props) {
   return (
     <Router>
+      <DndProvider backend={HTML5Backend}>
       <div className="wrapper">
         <div className="dashboard">
           <Sidebar />
@@ -53,6 +56,7 @@ function App(props) {
           </div>
         </div>
       </div>
+      </DndProvider>
     </Router>
   );
 }
