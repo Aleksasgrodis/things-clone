@@ -1,7 +1,15 @@
 import * as Types from '../actionTypes';
 
 const initialState = [
-  { id: '123323', title: 'Project 1', headings: [] },
+  {
+    id: '123323',
+    title: 'Project 1',
+    headings: [
+      { title: 'Heading 1', id: 'xyz' },
+      { title: 'Heading 2', id: 'xyx' },
+      { title: 'Heading 3', id: 'xyy' },
+    ],
+  },
   {
     id: '123325',
     title: 'Project 1',

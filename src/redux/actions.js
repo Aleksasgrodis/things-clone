@@ -44,3 +44,10 @@ export const addHeading = ({ id, parent, title }) => ({
   parent,
   title
 });
+
+export const editHeading = ({ id, parent, title }) => ({
+  type: types.EDIT_HEADING,
+  id,
+  parent,
+  title
+});

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createSelector } from 'reselect';
@@ -28,7 +28,14 @@ function ProjectView(props) {
   const { title, headings, tags, notes } = useSelector(state =>
     selectProjectWithId(state, projectID),
   );
-  console.log(notes);
+  const standaloneTasks = [...projectTasks].filter(t => !t.heading);
+  const headingsWithTasks = [...headings].map(heading => ({
+    ...heading,
+    tasks: projectTasks.filter(task => task.heading === heading.id),
+  }));
+  useEffect(() => {
+    setSelectedHeading(null)
+  }, [projectID])
   return (
     <div className="content">
       <div className="project">
@@ -53,10 +60,33 @@ function ProjectView(props) {
           />
         </header>
         <span>{tags}</span>
-        {headings.length ?  headings.map(a => <p>{a.title}</p>) : null}
-        {projectTasks.map(({ title, id }) => (
-          <p key={id}>{title}</p>
-        ))}
+        <div className="tasks">
+          {standaloneTasks.map(({ title, id }) => (
+            <div className="task">
+              <input type="checkbox" name="" id="" />
+              <p key={id}>{title}</p>
+            </div>
+          ))}
+        </div>
+        {headingsWithTasks.length
+          ? headingsWithTasks.map(a => (
+              <>
+                <div className={`heading ${selectedHeading === a.id ? 'selected' : ''}`} onClick={() => setSelectedHeading(a.id)}>
+                  <p>{a.title}</p>
+                </div>
+                {a.tasks.length
+                  ? a.tasks.map(t => (
+                      <div className="tasks">
+                        <div className="task">
+                          <input type="checkbox" name="" id="" />
+                          <p key={t.id}>{t.title}</p>
+                        </div>
+                      </div>
+                    ))
+                  : null}
+              </>
+            ))
+          : null}
       </div>
       <div className="actionables">
         <NewTask parent={projectID} heading={selectedHeading} />
