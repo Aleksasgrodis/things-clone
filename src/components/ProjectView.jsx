@@ -72,7 +72,7 @@ function ProjectView(props) {
         {headingsWithTasks.length
           ? headingsWithTasks.map(a => (
               <>
-                <div className="heading">
+                <div className={`heading ${selectedHeading === a.id ? 'selected' : ''}`} onClick={() => setSelectedHeading(a.id)}>
                   <p>{a.title}</p>
                 </div>
                 {a.tasks.length
