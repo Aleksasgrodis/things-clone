@@ -3,7 +3,7 @@ import { ItemTypes } from './Constants';
 import { useDrop } from 'react-dnd';
 import Task from './Task';
 import { useDispatch } from 'react-redux';
-import { editTodo } from '../redux/actions';
+import { editTodo, editTodoHeading } from '../redux/actions';
 
 function Heading(props) {
   const [collectedProps, drop] = useDrop({
@@ -12,7 +12,7 @@ function Heading(props) {
   });
   const dispatch = useDispatch();
   const changeTaskHeader = ({ id }) => {
-    dispatch(editTodo({ id, heading: props.id }));
+    dispatch(editTodoHeading({ id, heading: props.id }));
   };
   return (
     <div className="heading-wrapper" ref={drop}>
