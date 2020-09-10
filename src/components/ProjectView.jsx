@@ -28,7 +28,15 @@ function ProjectView(props) {
   const { title, headings, tags, notes } = useSelector(state =>
     selectProjectWithId(state, projectID),
   );
-  console.log(notes);
+  // tasks with no headings
+  const standaloneTasks = [...projectTasks].filter(t => !t.heading);
+  console.log(standaloneTasks);
+  // headings + headings with tasks
+  const headingsWithTasks = [...headings].map(heading => ({
+    ...heading,
+    tasks: projectTasks.filter(task => task.heading === heading.id),
+  }));
+  console.log(headingsWithTasks);
   return (
     <div className="content">
       <div className="project">
@@ -53,10 +61,33 @@ function ProjectView(props) {
           />
         </header>
         <span>{tags}</span>
-        {headings.length ?  headings.map(a => <p>{a.title}</p>) : null}
-        {projectTasks.map(({ title, id }) => (
-          <p key={id}>{title}</p>
-        ))}
+        <div className="tasks">
+          {standaloneTasks.map(({ title, id }) => (
+            <div className="task">
+              <input type="checkbox" name="" id="" />
+              <p key={id}>{title}</p>
+            </div>
+          ))}
+        </div>
+        {headingsWithTasks.length
+          ? headingsWithTasks.map(a => (
+              <>
+                <div className="heading">
+                  <p>{a.title}</p>
+                </div>
+                {a.tasks.length
+                  ? a.tasks.map(t => (
+                      <div className="tasks">
+                        <div className="task">
+                          <input type="checkbox" name="" id="" />
+                          <p key={t.id}>{t.title}</p>
+                        </div>
+                      </div>
+                    ))
+                  : null}
+              </>
+            ))
+          : null}
       </div>
       <div className="actionables">
         <NewTask parent={projectID} heading={selectedHeading} />

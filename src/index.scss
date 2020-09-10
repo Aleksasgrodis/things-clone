@@ -231,6 +231,23 @@ code {
           &::-webkit-scrollbar {
             width: 0 !important;
           }
+          .tasks {
+            display: flex;
+            flex-direction: column;
+            .task {
+              display: flex;
+            }
+          }
+          .heading {
+            color: rgb(73, 155, 225);
+            width: 100%;
+            font-size: 0.9em;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            margin-top: 40px;
+            font-weight: 800;
+            border-bottom: 1px solid rgba(73, 155, 225, 0.7);
+          }
           header {
             margin-top: 40px;
             .input-title {
