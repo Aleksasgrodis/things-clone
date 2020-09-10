@@ -53,9 +53,9 @@ export default function (state = initialState, action) {
         if (project.id === action.id) {
           return {
             ...project,
-            title: action.title,
+            title: action.title ? action.title : project.title,
             parent: action.parent ? action.parent : project.parent,
-            notes: action.notes,
+            notes: action.notes ? action.notes : project.notes,
           };
         }
         return project;

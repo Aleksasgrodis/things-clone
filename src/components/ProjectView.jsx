@@ -28,6 +28,7 @@ function ProjectView(props) {
   const { title, headings, tags, notes } = useSelector(state =>
     selectProjectWithId(state, projectID),
   );
+  console.log(notes);
   return (
     <div className="content">
       <div className="project">
@@ -45,7 +46,7 @@ function ProjectView(props) {
           <textarea
             className="input-notes"
             placeholder="Notes"
-            value={notes}
+            value={notes && notes.length ? notes : ''}
             onChange={e =>
               dispatch(editProject({ id: projectID, notes: e.target.value }))
             }
