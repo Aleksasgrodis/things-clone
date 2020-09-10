@@ -22,15 +22,6 @@ const selectTasksOfProject = createSelector(
   (tasks, projectID) => tasks.filter(({ parent }) => parent === projectID),
 );
 
-
-// function Heading(props) {
-//   const [collectedProps, drop] = useDrop({
-//     accept: [ItemTypes.TASK],
-//     drop: props.onDrop,
-//     })
-//     return <div ref={drop}>Drop here!</div>
-// }
-
 function ProjectView(props) {
   const { projectID } = useParams();
   const [selectedHeading, setSelectedHeading] = useState(null);
@@ -47,8 +38,8 @@ function ProjectView(props) {
     tasks: projectTasks.filter(task => task.heading === heading.id),
   }));
   useEffect(() => {
-    setSelectedHeading(null)
-  }, [projectID])
+    setSelectedHeading(null);
+  }, [projectID]);
   return (
     <div className="content">
       <div className="project">
@@ -79,9 +70,13 @@ function ProjectView(props) {
             <Task {...task} />
           ))}
         </div>
-          {headingsWithTasks.length
+        {headingsWithTasks.length
           ? headingsWithTasks.map(a => (
-              <Heading {...a} selectedHeading={selectedHeading} setSelectedHeading={setSelectedHeading} />
+              <Heading
+                {...a}
+                selectedHeading={selectedHeading}
+                setSelectedHeading={setSelectedHeading}
+              />
             ))
           : null}
       </div>
