@@ -24,7 +24,7 @@ const initialState = [
   { id: '123323', title: 'Task with area parent 1', parent: '12233323' },
   { id: '1235623', title: 'Task with area parent 2', parent: '12233323' },
   { id: '12323534', title: 'Task with area parent 3', parent: '12233323' },
-  { id: '1235623', title: 'Im a nested task!1', parent: '123325' },
+  { id: '1235623423', title: 'Im a nested task!1', parent: '123325' },
   { id: '12323534', title: 'Im a nested task!2', parent: '123326' },
 ];
 

@@ -7,9 +7,6 @@ import { createSelector } from 'reselect';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCoffee,
-  faCircle,
-  faCircleNotch,
   faInbox,
   faStar,
   faCalendarAlt,
@@ -17,7 +14,6 @@ import {
   faArchive,
   faBook,
   faTrash,
-  faBoxOpen,
 } from '@fortawesome/free-solid-svg-icons';
 import AreaListItem from './sidebar/AreaListItem';
 import ProjectListItem from './sidebar/ProjectListItem';
@@ -35,7 +31,6 @@ function Sidebar() {
   const projects = useSelector(state =>
     state.projects.map(({ title, parent, id }) => ({ title, parent, id })),
   );
-  // console.log(areas, projects);
 
   const areasWithChildren = areas.map(area => ({
     ...area,
