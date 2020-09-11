@@ -22,6 +22,11 @@ export const editTodoHeading = ({ id, heading }) => ({
   id,
   heading,
 });
+export const editTodoNotes = ({ id, notes }) => ({
+  type: types.EDIT_TODO_NOTES,
+  id,
+  notes,
+});
 
 export const addProject = ({ id, createdAt, title, parent }) => ({
   type: types.ADD_PROJECT,

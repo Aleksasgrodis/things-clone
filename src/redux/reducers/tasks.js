@@ -20,7 +20,7 @@ const initialState = [
     parent: '123323',
     heading: 'xyy',
   },
-  { id: '1231233153', title: 'Task with project parent 4', parent: '123323' },
+  { id: '1231233153', title: 'Task with project parent 4', parent: '123323', notes: 'Hello, im a default note!' },
   { id: '123323', title: 'Task with area parent 1', parent: '12233323' },
   { id: '1235623', title: 'Task with area parent 2', parent: '12233323' },
   { id: '12323534', title: 'Task with area parent 3', parent: '12233323' },
@@ -60,6 +60,17 @@ export default function (state = initialState, action) {
           return {
             ...task,
             heading: action.heading,
+          };
+        }
+        return task;
+      });
+    }
+    case Types.EDIT_TODO_NOTES: {
+      return state.map(task => {
+        if (task.id === action.id) {
+          return {
+            ...task,
+            notes: action.notes,
           };
         }
         return task;
