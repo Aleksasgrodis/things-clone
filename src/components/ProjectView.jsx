@@ -4,10 +4,8 @@ import { useParams } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import NewTask from './NewTask';
 import NewHeading from './NewHeading';
-import { editArea, editProject } from '../redux/actions';
+import { editProject } from '../redux/actions';
 import Task from './Task';
-import { useDrop } from 'react-dnd';
-import { ItemTypes } from './Constants';
 import Heading from './Heading';
 
 const selectProjectWithId = createSelector(
@@ -67,12 +65,13 @@ function ProjectView(props) {
 
         <div className="tasks">
           {standaloneTasks.map(task => (
-            <Task {...task} />
+            <Task key={task.id} {...task} />
           ))}
         </div>
         {headingsWithTasks.length
           ? headingsWithTasks.map(a => (
               <Heading
+              key={a.id}
                 {...a}
                 selectedHeading={selectedHeading}
                 setSelectedHeading={setSelectedHeading}

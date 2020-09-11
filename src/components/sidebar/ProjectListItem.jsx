@@ -23,7 +23,6 @@ function ProjectListItem(props) {
     <div ref={drop}>
     <NavLink
       ref={drag}
-      key={props.id}
       activeClassName="active"
       className="item thin"
       to={`/project/${props.id}`}

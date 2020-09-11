@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import NewTask from './NewTask';
 import NewProject from './NewProject';
 import { editArea } from '../redux/actions';
 import Task from './Task';
+import AdvancedProjectListItem from './AdvancedProjectListItem';
 const selectAreaWithId = createSelector(
   state => state.areas,
   (_, areaID) => areaID,
@@ -27,7 +28,6 @@ const selectProjectsOfArea = createSelector(
 function AreaView(props) {
   const { areaID } = useParams();
   const dispatch = useDispatch();
-  const [newTitle, setNewTitle] = useState(null);
   const { title, tags } = useSelector(state => selectAreaWithId(state, areaID));
   const projects = useSelector(state => selectProjectsOfArea(state, areaID));
   const tasks = useSelector(state => selectTasksOfArea(state, areaID));
@@ -48,24 +48,17 @@ function AreaView(props) {
           />
         </header>
         <div className="projects">
-          {projects.map(({ title, id }) => (
-            <div key={id} className="item">
-              <input type="checkbox" className="checkbox" name="" id=""/>
-              <Link to={`/project/${id}`} className="title">
-                {title}
-              </Link>
-              <span className="task-count">4</span>
-            </div>
+          {projects.map(project => (
+            <AdvancedProjectListItem key={project.id} {...project} />
           ))}
         </div>
         {tasks.map(task => (
-          <Task {...task} />
+          <Task key={task.id} {...task} />
         ))}
       </div>
       <div className="actionables">
         <NewTask parent={areaID} />
         <NewProject parent={areaID} />
-        <p>s</p>
       </div>
     </div>
   );

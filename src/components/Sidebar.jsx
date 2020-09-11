@@ -77,13 +77,13 @@ function Sidebar() {
         <div className="project-bundle">
           {projects && projectsWithoutParents && projectsWithoutParents.length
             ? projectsWithoutParents.map(p => (
-                <ProjectListItem {...p} />
+                <ProjectListItem key={p.id} {...p} />
               ))
             : null}
         </div>
           {areasWithChildren && areasWithChildren.length
           ? areasWithChildren.map(a => (
-            <AreaListItem {...a} />
+            <AreaListItem key={a.id} {...a} />
             ))
           : null}
       </div>

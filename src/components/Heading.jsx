@@ -3,7 +3,7 @@ import { ItemTypes } from './Constants';
 import { useDrop } from 'react-dnd';
 import Task from './Task';
 import { useDispatch } from 'react-redux';
-import { editTodo, editTodoHeading } from '../redux/actions';
+import { editTodoHeading } from '../redux/actions';
 
 function Heading(props) {
   const [collectedProps, drop] = useDrop({
@@ -25,7 +25,7 @@ function Heading(props) {
         <p>{props.title}</p>
       </div>
       <div className="tasks">
-        {props.tasks.length ? props.tasks.map(t => <Task {...t} />) : null}
+        {props.tasks.length ? props.tasks.map(t => <Task key={t.id} {...t} />) : null}
       </div>
     </div>
   );

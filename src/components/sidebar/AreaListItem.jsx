@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBoxOpen, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBoxOpen } from '@fortawesome/free-solid-svg-icons';
 import ProjectListItem from './ProjectListItem';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from '../Constants';
@@ -10,7 +10,6 @@ import { editTodo, editProject } from '../../redux/actions';
 
 function AreaListItem(props) {
   const [collapsed, setCollapsed] = useState(false);
-  // requires useDrop to drop tasks and projects into
   const [collectedProps, drop] = useDrop({
     accept: [ItemTypes.TASK, ItemTypes.PROJECT],
     drop: item => changeItemParent(item),
@@ -31,7 +30,6 @@ function AreaListItem(props) {
     <div className="project-bundle">
       <NavLink
        ref={drop}
-        key={props.id}
         activeClassName="active"
         className="item"
         to={`/area/${props.id}`}
@@ -45,7 +43,7 @@ function AreaListItem(props) {
       <div style={{ display: collapsed ? 'none' : 'contents' }}>
         {props.children && props.children.length
           ? props.children.map(c => (
-              <ProjectListItem {...c} />
+              <ProjectListItem key={c.id} {...c} />
             ))
           : null}
       </div>
