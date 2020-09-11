@@ -5,7 +5,7 @@ import { createSelector } from 'reselect';
 import NewTask from './NewTask';
 import NewProject from './NewProject';
 import { editArea } from '../redux/actions';
-
+import Task from './Task';
 const selectAreaWithId = createSelector(
   state => state.areas,
   (_, areaID) => areaID,
@@ -36,24 +36,31 @@ function AreaView(props) {
     <div className="content">
       <div className="area">
         <header>
-            <input
+          <input
             className="input-title"
-              type="text"
-              name="title"
-              placeholder="New Area"
-              value={title}
-              onChange={e => dispatch(editArea({id: areaID, title: e.target.value}))}
-            />
+            type="text"
+            name="title"
+            placeholder="New Area"
+            value={title}
+            onChange={e =>
+              dispatch(editArea({ id: areaID, title: e.target.value }))
+            }
+          />
         </header>
-        {projects.map(({ title, id }) => (
-          <Link to={`/project/${id}`} key={id}>
-            <p>{title}</p>
-          </Link>
+        <div className="projects">
+          {projects.map(({ title, id }) => (
+            <div key={id} className="item">
+              <input type="checkbox" className="checkbox" name="" id=""/>
+              <Link to={`/project/${id}`} className="title">
+                {title}
+              </Link>
+              <span className="task-count">4</span>
+            </div>
+          ))}
+        </div>
+        {tasks.map(task => (
+          <Task {...task} />
         ))}
-        {tasks.map(({ title, id }) => (
-          <p key={id}>{title}</p>
-        ))}
-        asdsad
       </div>
       <div className="actionables">
         <NewTask parent={areaID} />

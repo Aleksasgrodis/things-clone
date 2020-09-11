@@ -310,6 +310,7 @@ code {
           }
           header {
             margin-top: 40px;
+            margin-bottom: 40px;
             .input-title {
               color: white;
               background: transparent;
@@ -317,6 +318,32 @@ code {
               outline: none;
               font-size: 2em;
               font-weight: 500;
+            }
+          }
+          .projects {
+            margin-bottom: 30px;
+            .item {
+              display: flex;
+              align-items: center;
+              .checkbox {
+                width: 25px;
+                height: 15px;
+              }
+              .title {
+                text-decoration: none;
+                color: white;
+                font-weight: 700;
+                font-size: 0.9em;
+              }
+              .task-count {
+                margin-left: 10px;
+                border: 1px solid #999;
+                padding: 0px 3px;
+                border-radius: 4px;
+                font-size: 0.73em;
+                color: #999;
+                font-weight: 600;
+              }
             }
           }
         }
