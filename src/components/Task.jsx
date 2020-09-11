@@ -16,7 +16,7 @@ function Task(props) {
       <label htmlFor="task" onClick={() => setSelected(!selected)}>{props.title}</label>
       </div>
       <div className="extension">
-        <textarea name="" id="" value={props.notes} onChange={(e) => dispatch(editTodoNotes({id: props.id, notes: e.target.value}))} rows="5" />
+        <textarea name="" id="" value={props.notes} placeholder="Notes" onChange={(e) => dispatch(editTodoNotes({id: props.id, notes: e.target.value}))} rows="4" />
         <div className="actions">buttons</div>
       </div>
     </div>
