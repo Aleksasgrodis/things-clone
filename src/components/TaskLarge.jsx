@@ -12,6 +12,7 @@ function TaskLarge(props) {
         <input
           type="text"
           className="title"
+          placeholder="New Todo"
           value={props.title}
           onChange={e =>
             dispatch(editTodoTitle({ id: props.id, title: e.target.value }))
