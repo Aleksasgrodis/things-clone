@@ -76,6 +76,17 @@ export default function (state = initialState, action) {
         return task;
       });
     }
+    case Types.EDIT_TODO_TITLE: {
+      return state.map(task => {
+        if (task.id === action.id) {
+          return {
+            ...task,
+            title: action.title,
+          };
+        }
+        return task;
+      });
+    }
 
     default:
       return state;

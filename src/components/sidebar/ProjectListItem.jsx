@@ -11,25 +11,28 @@ function ProjectListItem(props) {
   const [collectedProps, drag] = useDrag({
     item: { id: props.id, type: 'project' },
   });
-  const [colProps, drop] = useDrop({
+  const [{ isActive }, drop] = useDrop({
     accept: [ItemTypes.TASK],
     drop: item => changeItemParent(item),
+    collect: monitor => ({
+      isActive: monitor.canDrop() && monitor.isOver(),
+    }),
   });
   const dispatch = useDispatch();
-  const changeItemParent = ({id}) => {
-    dispatch(editTodo({id, parent: props.id}))
-  }
+  const changeItemParent = ({ id }) => {
+    dispatch(editTodo({ id, parent: props.id }));
+  };
   return (
-    <div ref={drop}>
-    <NavLink
-      ref={drag}
-      activeClassName="active"
-      className="item thin"
-      to={`/project/${props.id}`}
-    >
-      <FontAwesomeIcon icon={faCircle} />
-      <span className="title">{props.title}</span>
-    </NavLink>
+    <div ref={drop} className="drop-wrapper">
+      <NavLink
+        ref={drag}
+        activeClassName="active"
+        className={`item thin ${isActive ? 'droppable' : null}`}
+        to={`/project/${props.id}`}
+      >
+        <FontAwesomeIcon icon={faCircle} />
+        <span className="title">{props.title}</span>
+      </NavLink>
     </div>
   );
 }

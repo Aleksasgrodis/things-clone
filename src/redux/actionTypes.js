@@ -4,6 +4,7 @@ export const REMOVE_TODO = 'REMOVE_TODO';
 export const EDIT_TODO = 'EDIT_TODO';
 export const EDIT_TODO_HEADING = 'EDIT_TODO_HEADING';
 export const EDIT_TODO_NOTES = 'EDIT_TODO_NOTES';
+export const EDIT_TODO_TITLE = 'EDIT_TODO_TITLE';
 
 export const ADD_AREA = 'ADD_AREA';
 export const TOGGLE_AREA = 'TOGGLE_AREA';

@@ -145,7 +145,14 @@ code {
           margin-bottom: 10px;
           margin-top: 10px;
           display: flex;
+          width: 100%;
           flex-direction: column;
+          .drop-wrapper {
+            width: 100%;
+            a {
+              width: 100%;
+            }
+          }
         }
         a {
           color: white;
@@ -155,6 +162,11 @@ code {
           font-weight: 600;
           padding: 2px 4px;
           border-radius: 4px;
+          width: 100%;
+          &.droppable {
+            border: 2px solid rgb(118, 214, 255);
+          }
+
           &.item {
             svg {
               width: 25px;
@@ -234,52 +246,53 @@ code {
           .tasks {
             display: flex;
             flex-direction: column;
-            .task {
-              display: flex;
-              flex-direction: column;
-              height: 19px;
-              overflow: hidden;
-              margin-bottom: 5px;
-              &.selected {
-                height: auto;
-                overflow-y: visible;
-                background: rgba(255, 255, 255, 0.1);
-                padding: 10px 10px;
-                border-radius: 5px;
-                margin-bottom: 20px;
-              }
-              .brief {
-
-              }
-              .extension {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                textarea {
-                  width: 100%;
-                  background: transparent;
-                  color: white;
-                  font-family: inherit;
-                  border: none;
-                  outline: none;
-                }
-                .actions {
-                  align-self: flex-end;
-                }
-              }
-              input {
-                &[type="checkbox"] {
-                  background: transparent;
-                  border: 1px solid transparent;
-                  &:checked {
-                    background-color: transparent;
-                  }
-                  &:not(:checked) {
-                    background-color: transparent;
-                  }
-                }
-              }
-            }
+            // .task {
+            //   display: flex;
+            //   flex-direction: column;
+            //   // height: 19px;
+            //   // overflow: hidden;
+            //   margin-bottom: 5px;
+            //   // &.selected {
+            //   //   height: auto;
+            //   //   overflow-y: visible;
+            //   //   background: rgba(255, 255, 255, 0.1);
+            //   //   padding: 10px 10px;
+            //   //   border-radius: 5px;
+            //   //   margin-bottom: 20px;
+            //   // }
+            //   .small {
+            //     color:red;
+            //   }
+            //   .large {
+            //     width: 100%;
+            //     display: flex;
+            //     flex-direction: column;
+            //     border: 1px solid red;
+            //     textarea {
+            //       width: 100%;
+            //       background: transparent;
+            //       color: white;
+            //       font-family: inherit;
+            //       border: none;
+            //       outline: none;
+            //     }
+            //     .actions {
+            //       align-self: flex-end;
+            //     }
+            //   }
+            //   input {
+            //     &[type="checkbox"] {
+            //       background: transparent;
+            //       border: 1px solid transparent;
+            //       &:checked {
+            //         background-color: transparent;
+            //       }
+            //       &:not(:checked) {
+            //         background-color: transparent;
+            //       }
+            //     }
+            //   }
+            // }
           }
           .heading {
             color: rgb(96, 170, 235);
@@ -376,6 +389,10 @@ code {
               }
             }
           }
+          .tasks {
+            display: flex;
+            flex-direction: column;
+          }
         }
         .actionables {
           border-top: 1px solid rgb(26, 27, 28);
@@ -388,6 +405,60 @@ code {
           justify-content: space-evenly;
           align-items: center;
         }
+      }
+    }
+  }
+}
+
+.task {
+  .small {
+    padding: 4px;
+    width: 100%;
+    border-radius: 4px;
+    .title {
+      padding-left: 5px;
+      font-size: 0.9em;
+      font-weight: 600;
+    }
+    &.active {
+      background: rgb(26, 66, 114);
+    }
+  }
+  .large {
+    width: 100%;
+    padding: 15px 10px;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    background: rgb(47, 48, 50);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    display: flex;
+    .editables {
+      padding-left: 5px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      .title {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 0.9em;
+        font-weight: 600;
+      }
+      .notes {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        font-family: inherit;
+        font-size: 0.9em;
+        font-weight: 600;
+      }
+      .actions {
+        align-self: flex-end;
       }
     }
   }

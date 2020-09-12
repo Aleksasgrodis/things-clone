@@ -52,9 +52,11 @@ function AreaView(props) {
             <AdvancedProjectListItem key={project.id} {...project} />
           ))}
         </div>
-        {tasks.map(task => (
-          <Task key={task.id} {...task} />
-        ))}
+        <div className="tasks">
+          {tasks.map(task => (
+            <Task key={task.id} {...task} />
+          ))}
+        </div>
       </div>
       <div className="actionables">
         <NewTask parent={areaID} />
