@@ -10,9 +10,12 @@ import { editTodo, editProject } from '../../redux/actions';
 
 function AreaListItem(props) {
   const [collapsed, setCollapsed] = useState(false);
-  const [collectedProps, drop] = useDrop({
+  const [{isActive}, drop] = useDrop({
     accept: [ItemTypes.TASK, ItemTypes.PROJECT],
     drop: item => changeItemParent(item),
+    collect: monitor => ({
+      isActive: monitor.canDrop() && monitor.isOver(),
+    }),
   });
   const dispatch = useDispatch()
 
@@ -31,7 +34,7 @@ function AreaListItem(props) {
       <NavLink
        ref={drop}
         activeClassName="active"
-        className="item"
+        className={`item ${isActive ? 'droppable' : null}`}
         to={`/area/${props.id}`}
       >
         <FontAwesomeIcon icon={faBoxOpen} />

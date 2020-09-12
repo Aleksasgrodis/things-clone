@@ -145,7 +145,14 @@ code {
           margin-bottom: 10px;
           margin-top: 10px;
           display: flex;
+          width: 100%;
           flex-direction: column;
+          .drop-wrapper {
+            width: 100%;
+            a {
+              width: 100%;
+            }
+          }
         }
         a {
           color: white;
@@ -155,6 +162,11 @@ code {
           font-weight: 600;
           padding: 2px 4px;
           border-radius: 4px;
+          width: 100%;
+          &.droppable {
+            border: 2px solid rgb(118, 214, 255);
+          }
+
           &.item {
             svg {
               width: 25px;
