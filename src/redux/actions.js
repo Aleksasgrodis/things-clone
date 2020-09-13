@@ -33,6 +33,10 @@ export const editTodoTitle = ({ id, title }) => ({
   id,
   title,
 });
+export const editTodoDoneStatus = ({ id }) => ({
+  type: types.EDIT_TODO_DONE_STATUS,
+  id,
+});
 
 export const addProject = ({ id, createdAt, title, parent }) => ({
   type: types.ADD_PROJECT,

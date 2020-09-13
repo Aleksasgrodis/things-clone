@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { editTodoDoneStatus } from '../redux/actions';
 
 function TaskSmall(props) {
   const { title, id, selected, setSelected, drag } = props;
   const [active, setActive] = useState(false);
   const node = useRef();
+  const dispatch = useDispatch();
   
   useEffect(() => {
     const handleClick = e => {
@@ -25,7 +28,7 @@ function TaskSmall(props) {
         onClick={() => setActive(true)}
         onDoubleClick={() => setSelected(!selected)}
       >
-        <input type="checkbox" className="checkbox" name="task" id="" />
+        <input type="checkbox" checked={props.done} onChange={() => dispatch(editTodoDoneStatus({id: props.id}))} className="checkbox" name="task" id="" />
         <label htmlFor="task" className="title">
           {props.title}
         </label>
