@@ -442,6 +442,22 @@ code {
           display: flex;
           justify-content: space-evenly;
           align-items: center;
+          .action {
+            color:rgb(157, 157, 157);
+            min-width: 70px;
+            max-width: 100px;
+            height:80%;
+            border-radius: 4px;
+            background: transparent;
+            border: 1px solid transparent;
+            outline: none;
+            &:hover {
+              border:1px solid rgb(60, 60, 60);
+            }
+            &:active {
+              background:rgb(60, 60, 60);
+            }
+          }
         }
       }
     }
@@ -527,3 +543,8 @@ code {
     }
   }
 }
+
+
+  .actionables {
+    color: red;
+  }

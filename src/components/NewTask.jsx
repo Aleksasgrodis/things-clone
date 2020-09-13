@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/actions';
 import { v4 as uuidv4 } from 'uuid';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function NewTask(props) {
   const dispatch = useDispatch();
@@ -21,13 +23,9 @@ function NewTask(props) {
     );
   };
   return (
-    <div>
-      <button
-        onClick={() => handleNewTask()}
-      >
-        New Task
-      </button>
-    </div>
+    <button className="action" onClick={() => handleNewTask()}>
+      <FontAwesomeIcon icon={faPlus} />
+    </button>
   );
 }
 

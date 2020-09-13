@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { addProject } from '../redux/actions';
 import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function NewProject(props) {
   const dispatch = useDispatch();
@@ -22,9 +24,9 @@ function NewProject(props) {
     history.push(`/project/${projectId}`);
   };
   return (
-    <div>
-      <button onClick={() => handleNewProject()}>New Project</button>
-    </div>
+    <button className="action" onClick={() => handleNewProject()}>
+      <FontAwesomeIcon icon={faPlusCircle} />
+    </button>
   );
 }
 
