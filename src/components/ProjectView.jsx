@@ -36,7 +36,7 @@ function ProjectView(props) {
   );
   const headingsWithTasks = [...headings].map(heading => ({
     ...heading,
-    tasks: projectTasks.filter(task => task.heading === heading.id),
+    tasks: projectTasks.filter(task => task.heading === heading.id && !task.completed),
   }));
   const completedTasks = [...projectTasks].filter(t => t.completed);
   useEffect(() => {
