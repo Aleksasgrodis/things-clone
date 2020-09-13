@@ -13,7 +13,7 @@ function Heading(props) {
   const dispatch = useDispatch();
   const node = React.useRef();
   const changeTaskHeader = ({ id }) => {
-    dispatch(editTodoHeading({ id, heading: props.id }));
+    dispatch(editTodoHeading({ id, heading: props.id, headingTitle: props.title }));
   };
 
   React.useEffect(() => {
@@ -33,9 +33,9 @@ function Heading(props) {
       <div className="heading-wrapper" ref={drop}>
         <div
           className={`heading ${
-            props.selectedHeading === props.id ? 'selected' : ''
+            props.selectedHeading && props.selectedHeading.id === props.id ? 'selected' : ''
           }`}
-          onClick={() => props.setSelectedHeading(props.id)}
+          onClick={() => props.setSelectedHeading({id: props.id, title: props.title})}
         >
           <p>{props.title}</p>
         </div>

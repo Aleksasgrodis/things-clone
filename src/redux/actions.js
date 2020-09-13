@@ -1,12 +1,13 @@
 import * as types from './actionTypes';
 
-export const addTodo = ({ id, createdAt, parent, heading, title }) => ({
+export const addTodo = ({ id, createdAt, parent, heading, title, headingTitle }) => ({
   type: types.ADD_TODO,
   id,
   title,
   createdAt,
   parent,
   heading,
+  headingTitle,
 });
 
 export const editTodo = ({ id, parent, heading, title }) => ({
@@ -17,10 +18,11 @@ export const editTodo = ({ id, parent, heading, title }) => ({
   heading,
 });
 
-export const editTodoHeading = ({ id, heading }) => ({
+export const editTodoHeading = ({ id, heading, headingTitle }) => ({
   type: types.EDIT_TODO_HEADING,
   id,
   heading,
+  headingTitle,
 });
 export const editTodoNotes = ({ id, notes }) => ({
   type: types.EDIT_TODO_NOTES,

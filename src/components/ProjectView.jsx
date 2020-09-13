@@ -7,7 +7,7 @@ import NewHeading from './NewHeading';
 import { editProject } from '../redux/actions';
 import Task from './Task';
 import Heading from './Heading';
-
+import LoggedItems from './LoggedItems';
 const selectProjectWithId = createSelector(
   state => state.projects,
   (_, projectID) => projectID,
@@ -22,7 +22,8 @@ const selectTasksOfProject = createSelector(
 
 function ProjectView(props) {
   const { projectID } = useParams();
-  const [selectedHeading, setSelectedHeading] = useState(null);
+  const [selectedHeading, setSelectedHeading] = useState({id: null, title: null});
+  const [showLogged, setShowLogged] = useState(false);
   const dispatch = useDispatch();
   const projectTasks = useSelector(state =>
     selectTasksOfProject(state, projectID),
@@ -30,11 +31,14 @@ function ProjectView(props) {
   const { title, headings, tags, notes } = useSelector(state =>
     selectProjectWithId(state, projectID),
   );
-  const standaloneTasks = [...projectTasks].filter(t => !t.heading);
+  const standaloneTasks = [...projectTasks].filter(
+    t => !t.heading && !t.completed,
+  );
   const headingsWithTasks = [...headings].map(heading => ({
     ...heading,
     tasks: projectTasks.filter(task => task.heading === heading.id),
   }));
+  const completedTasks = [...projectTasks].filter(t => t.completed);
   useEffect(() => {
     setSelectedHeading(null);
   }, [projectID]);
@@ -79,7 +83,21 @@ function ProjectView(props) {
             ))
           : null}
 
-        <div>Show x logged item(s)</div>
+        {completedTasks.length ? (
+          <button
+            className="logged-toggle"
+            onClick={() => setShowLogged(!showLogged)}
+          >
+            {showLogged
+              ? 'Hide logged items'
+              : `Show ${completedTasks.length} logged ${
+                  completedTasks.length > 1 ? 'items' : 'item'
+                }`}
+          </button>
+        ) : null}
+        {showLogged && completedTasks.length && (
+          <LoggedItems tasks={completedTasks} headings={headings} />
+        )}
       </div>
       <div className="actionables">
         <NewTask parent={projectID} heading={selectedHeading} />

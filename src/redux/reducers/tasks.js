@@ -73,6 +73,7 @@ export default function (state = initialState, action) {
           createdAt: action.createdAt,
           parent: action.parent,
           heading: action.heading,
+          headingTitle: action.headingTitle,
         },
       ];
     }
@@ -94,6 +95,7 @@ export default function (state = initialState, action) {
           return {
             ...task,
             heading: action.heading,
+            headingTitle: action.headingTitle,
           };
         }
         return task;
