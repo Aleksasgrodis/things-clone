@@ -7,6 +7,8 @@ import NewProject from './NewProject';
 import { editArea } from '../redux/actions';
 import Task from './Task';
 import AdvancedProjectListItem from './AdvancedProjectListItem';
+import NewSearch from './NewSearch';
+import NewMove from './NewMove';
 const selectAreaWithId = createSelector(
   state => state.areas,
   (_, areaID) => areaID,
@@ -61,6 +63,8 @@ function AreaView(props) {
       <div className="actionables">
         <NewTask parent={areaID} />
         <NewProject parent={areaID} />
+        <NewMove />
+        <NewSearch />
       </div>
     </div>
   );

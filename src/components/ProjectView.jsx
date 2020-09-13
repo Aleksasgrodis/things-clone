@@ -8,6 +8,8 @@ import { editProject } from '../redux/actions';
 import Task from './Task';
 import Heading from './Heading';
 import LoggedItems from './LoggedItems';
+import NewSearch from './NewSearch';
+import NewMove from './NewMove';
 const selectProjectWithId = createSelector(
   state => state.projects,
   (_, projectID) => projectID,
@@ -95,13 +97,15 @@ function ProjectView(props) {
                 }`}
           </button>
         ) : null}
-        {showLogged && completedTasks.length && (
+        {showLogged && completedTasks.length ? (
           <LoggedItems tasks={completedTasks} />
-        )}
+        ) : null}
       </div>
       <div className="actionables">
         <NewTask parent={projectID} heading={selectedHeading} />
         <NewHeading parent={projectID} />
+        <NewMove />
+        <NewSearch />
       </div>
     </div>
   );

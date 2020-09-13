@@ -22,7 +22,7 @@ function NewArea(props) {
   };
   return (
     <div>
-      <button onClick={() => handleNewArea()}>New Project</button>
+      <button onClick={() => handleNewArea()}>New Area</button>
     </div>
   );
 }
