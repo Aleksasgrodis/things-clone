@@ -10,17 +10,7 @@ function Task(props) {
   const [selected, setSelected] = useState(false);
   return (
     <div className="task">
-      {/* <div className={`task${selected ? ' selected' : ''}`} ref={drag} >
-        <div className="brief">
-          <input type="checkbox" className="checkbox" name="task" id="" />
-          <label htmlFor="task" onClick={() => setSelected(!selected)}>
-            {props.title}
-          </label>
-        </div>
-
-        
-      </div> */}
-      {selected ? <TaskLarge {...props} /> : <TaskSmall {...props} drag={drag} setSelected={setSelected} selected={selected} />}
+      {selected ? <TaskLarge {...props} setSelected={setSelected} selected={selected} /> : <TaskSmall {...props} drag={drag} setSelected={setSelected} selected={selected} />}
     </div>
   );
 }

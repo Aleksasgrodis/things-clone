@@ -4,9 +4,21 @@ import { editTodoNotes, editTodoTitle } from '../redux/actions';
 
 function TaskLarge(props) {
   const dispatch = useDispatch();
+  const node = React.useRef();
 
+  React.useEffect(() => {
+    const handleClick = e => {
+      if (!node.current.contains(e.target)) {
+        props.setSelected(!props.setSelected);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, [props]);
   return (
-    <div className="large">
+    <div className="large" ref={node}>
       <input type="checkbox" className="checkbox" name="task" id="" />
       <div className="editables">
         <input
