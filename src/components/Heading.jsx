@@ -18,7 +18,7 @@ function Heading(props) {
 
   React.useEffect(() => {
     const handleClick = e => {
-      if(!node.current.contains(e.target)){
+      if(!node.current.contains(e.target) && e.target.type !== 'submit'){
         props.setSelectedHeading(null)
       }
     }
