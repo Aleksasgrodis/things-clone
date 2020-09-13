@@ -149,8 +149,26 @@ code {
           flex-direction: column;
           .drop-wrapper {
             width: 100%;
-            a {
-              width: 100%;
+            display: flex;
+          }
+          a {
+            width: 100%;
+            padding-top:2px;
+            padding-bottom:2px;
+            &.item {
+              .parent-details{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .text {
+                }
+                .chevron {
+                  color: gray;
+                  font-weight: 100;
+                  font-size: small;
+                  
+                }
+              }
             }
           }
         }
@@ -160,9 +178,10 @@ code {
           width: auto;
           font-size: 0.9em;
           font-weight: 600;
-          padding: 2px 4px;
+          
           border-radius: 4px;
           width: 100%;
+          border: 2px solid transparent;
           &.droppable {
             border: 2px solid rgb(118, 214, 255);
           }
@@ -197,7 +216,7 @@ code {
               margin-left: 3px;
             }
             &.thin {
-              font-weight: 400;
+              font-weight: 400;;
             }
           }
           &.active {

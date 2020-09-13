@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBoxOpen } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowDown,
+  faArrowRight,
+  faBoxOpen,
+  faChevronCircleDown,
+  faChevronDown,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
 import ProjectListItem from './ProjectListItem';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from '../Constants';
@@ -37,11 +44,26 @@ function AreaListItem(props) {
         className={`item ${isActive ? 'droppable' : null}`}
         to={`/area/${props.id}`}
       >
-        <FontAwesomeIcon icon={faBoxOpen} />
-        <span className="title">{props.title}</span>
-        <button onClick={() => setCollapsed(!collapsed)}>
-          {collapsed ? 'open' : 'close'}
-        </button>
+        <div className="parent-details">
+          <div className="text">
+            <FontAwesomeIcon icon={faBoxOpen} />
+            <span className="title">{props.title}</span>
+          </div>
+
+          {collapsed ? (
+            <FontAwesomeIcon
+              className="chevron"
+              icon={faChevronRight}
+              onClick={() => setCollapsed(!collapsed)}
+            />
+          ) : (
+            <FontAwesomeIcon
+              className="chevron"
+              icon={faChevronDown}
+              onClick={() => setCollapsed(!collapsed)}
+            />
+          )}
+        </div>
       </NavLink>
       <div style={{ display: collapsed ? 'none' : 'contents' }}>
         {props.children && props.children.length
