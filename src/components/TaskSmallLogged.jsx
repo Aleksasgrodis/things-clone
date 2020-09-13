@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { editTodoCompletedStatus } from '../redux/actions';
+import moment from 'moment';
 
-function TaskSmall(props) {
+function TaskSmallLogged(props) {
   const { title, id, selected, setSelected, drag } = props;
   const [active, setActive] = useState(false);
   const node = useRef();
@@ -23,14 +24,14 @@ function TaskSmall(props) {
   return (
     <div ref={node}>
       <div
-        className={`small ${active ? 'active' : ''}`}
+        className={`small logged ${active ? 'active' : ''}`}
         ref={drag}
         onClick={() => setActive(true)}
         onDoubleClick={() => setSelected(!selected)}
       >
         <input
           type="checkbox"
-          checked={props.done}
+          checked={props.completed}
           onChange={() =>
             dispatch(
               editTodoCompletedStatus({
@@ -43,12 +44,17 @@ function TaskSmall(props) {
           name="task"
           id=""
         />
+        <span className="date">{moment(props.completedAt).format('DD MMM')}</span>
+        <div className="text-details">
         <label htmlFor="task" className="title">
           {props.title}
         </label>
+        { props.headingTitle && <span className="header">{props.headingTitle}</span>}
+        </div>
+        
       </div>
     </div>
   );
 }
 
-export default TaskSmall;
+export default TaskSmallLogged

@@ -96,7 +96,7 @@ function ProjectView(props) {
           </button>
         ) : null}
         {showLogged && completedTasks.length && (
-          <LoggedItems tasks={completedTasks} headings={headings} />
+          <LoggedItems tasks={completedTasks} />
         )}
       </div>
       <div className="actionables">

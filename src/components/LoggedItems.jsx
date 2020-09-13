@@ -1,16 +1,13 @@
 import React from 'react';
+import TaskLogged from './TaskLogged';
 
 function LoggedItems({tasks, headings}) {
-  const tasksWithHeadings = tasks.map(t => {
-    // if (t.heading) {
-    //   const heading = headings.find(h => h.id === t.heading)
-    //   return {
-    //     ...t,
-    //     headingTitle:
-    //   }
-    // }
-  })
-  return <div>asdasd</div>;
+  
+  return (
+    <div>
+      {tasks.map(t => <TaskLogged key={t.id} {...t} />)}
+    </div>
+  );
 }
 
 export default LoggedItems;

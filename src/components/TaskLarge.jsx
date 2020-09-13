@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import {
   editTodoCompletedStatus,
-  editTodoDoneStatus,
   editTodoNotes,
   editTodoTitle,
 } from '../redux/actions';
@@ -27,7 +26,7 @@ function TaskLarge(props) {
       <input
         type="checkbox"
         className="checkbox"
-        checked={props.done}
+        checked={props.completed}
         onChange={() =>
           dispatch(
             editTodoCompletedStatus({ id: props.id, completedAt: Date.now() }),

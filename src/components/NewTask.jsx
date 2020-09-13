@@ -8,13 +8,13 @@ function NewTask(props) {
   const handleNewTask = () => {
     const taskId = uuidv4(),
       createdAt = Date.now();
-    const { parent, heading, headingTitle } = props;
+    const { parent, heading } = props;
     dispatch(
       addTodo({
         id: taskId,
         createdAt: createdAt,
-        heading: heading.id,
-        headingTitle: heading.title,
+        heading: heading && heading.id,
+        headingTitle: heading && heading.title,
         title: 'Dummy Task',
         parent: parent,
       }),
