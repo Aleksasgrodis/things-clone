@@ -1,6 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { editTodoDoneStatus, editTodoNotes, editTodoTitle } from '../redux/actions';
+import {
+  editTodoCompletedStatus,
+  editTodoDoneStatus,
+  editTodoNotes,
+  editTodoTitle,
+} from '../redux/actions';
 
 function TaskLarge(props) {
   const dispatch = useDispatch();
@@ -19,7 +24,16 @@ function TaskLarge(props) {
   }, [props]);
   return (
     <div className="large" ref={node}>
-      <input type="checkbox" className="checkbox" name="task" id="" checked={props.done} onChange={() => dispatch(editTodoDoneStatus({id: props.id}))} />
+      <input
+        type="checkbox"
+        className="checkbox"
+        checked={props.done}
+        onChange={() =>
+          dispatch(
+            editTodoCompletedStatus({ id: props.id, completedAt: Date.now() }),
+          )
+        }
+      />
       <div className="editables">
         <input
           type="text"

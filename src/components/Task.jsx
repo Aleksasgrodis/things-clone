@@ -10,7 +10,16 @@ function Task(props) {
   const [selected, setSelected] = useState(false);
   return (
     <div className="task">
-      {selected ? <TaskLarge {...props} setSelected={setSelected} selected={selected} /> : <TaskSmall {...props} drag={drag} setSelected={setSelected} selected={selected} />}
+      {selected ? (
+        <TaskLarge {...props} setSelected={setSelected} selected={selected} />
+      ) : (
+        <TaskSmall
+          {...props}
+          drag={drag}
+          setSelected={setSelected}
+          selected={selected}
+        />
+      )}
     </div>
   );
 }

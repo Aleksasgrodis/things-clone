@@ -10,29 +10,29 @@ import { editTodo, editProject } from '../../redux/actions';
 
 function AreaListItem(props) {
   const [collapsed, setCollapsed] = useState(false);
-  const [{isActive}, drop] = useDrop({
+  const [{ isActive }, drop] = useDrop({
     accept: [ItemTypes.TASK, ItemTypes.PROJECT],
     drop: item => changeItemParent(item),
     collect: monitor => ({
       isActive: monitor.canDrop() && monitor.isOver(),
     }),
   });
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const changeItemParent = item => {
     if (item.type === 'project') {
       const { id } = item;
-      dispatch(editProject({id, parent: props.id}))
+      dispatch(editProject({ id, parent: props.id }));
     }
     if (item.type === 'task') {
       const { id } = item;
-      dispatch(editTodo({id, parent: props.id}))
+      dispatch(editTodo({ id, parent: props.id }));
     }
-  }
+  };
   return (
     <div className="project-bundle">
       <NavLink
-       ref={drop}
+        ref={drop}
         activeClassName="active"
         className={`item ${isActive ? 'droppable' : null}`}
         to={`/area/${props.id}`}
@@ -45,9 +45,7 @@ function AreaListItem(props) {
       </NavLink>
       <div style={{ display: collapsed ? 'none' : 'contents' }}>
         {props.children && props.children.length
-          ? props.children.map(c => (
-              <ProjectListItem key={c.id} {...c} />
-            ))
+          ? props.children.map(c => <ProjectListItem key={c.id} {...c} />)
           : null}
       </div>
     </div>

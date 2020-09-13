@@ -33,9 +33,10 @@ export const editTodoTitle = ({ id, title }) => ({
   id,
   title,
 });
-export const editTodoDoneStatus = ({ id }) => ({
-  type: types.EDIT_TODO_DONE_STATUS,
+export const editTodoCompletedStatus = ({ id, completedAt }) => ({
+  type: types.EDIT_TODO_COMPLETED_STATUS,
   id,
+  completedAt,
 });
 
 export const addProject = ({ id, createdAt, title, parent }) => ({
@@ -51,32 +52,32 @@ export const editProject = ({ id, title, parent, notes }) => ({
   id,
   parent,
   title,
-  notes
+  notes,
 });
 
 export const addArea = ({ id, createdAt, title }) => ({
   type: types.ADD_AREA,
   id,
   createdAt,
-  title
+  title,
 });
 export const editArea = ({ id, title, tags }) => ({
   type: types.EDIT_AREA,
   id,
   tags,
-  title
+  title,
 });
 
 export const addHeading = ({ id, parent, title }) => ({
   type: types.ADD_HEADING,
   id,
   parent,
-  title
+  title,
 });
 
 export const editHeading = ({ id, parent, title }) => ({
   type: types.EDIT_HEADING,
   id,
   parent,
-  title
+  title,
 });

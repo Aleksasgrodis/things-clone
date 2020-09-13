@@ -57,7 +57,11 @@ function Sidebar() {
           <FontAwesomeIcon className="anytime" icon={faLayerGroup} />
           <span className="title">Anytime</span>
         </NavLink>
-        <NavLink activeClassName="active" className="spacing item" to="/someday">
+        <NavLink
+          activeClassName="active"
+          className="spacing item"
+          to="/someday"
+        >
           <FontAwesomeIcon className="someday" icon={faArchive} />
           <span className="title">Someday</span>
         </NavLink>
@@ -76,10 +80,8 @@ function Sidebar() {
               ))
             : null}
         </div>
-          {areasWithChildren && areasWithChildren.length
-          ? areasWithChildren.map(a => (
-            <AreaListItem key={a.id} {...a} />
-            ))
+        {areasWithChildren && areasWithChildren.length
+          ? areasWithChildren.map(a => <AreaListItem key={a.id} {...a} />)
           : null}
       </div>
       <div className="actionables">

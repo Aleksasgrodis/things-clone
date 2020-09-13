@@ -11,13 +11,15 @@ function NewArea(props) {
   const handleNewArea = () => {
     const areaId = uuidv4(),
       createdAt = Date.now();
-      dispatch(addArea({
+    dispatch(
+      addArea({
         id: areaId,
         createdAt,
-        title: 'New Area'
-      }))
-      history.push(`/area/${areaId}`)
-  };  
+        title: 'New Area',
+      }),
+    );
+    history.push(`/area/${areaId}`);
+  };
   return (
     <div>
       <button onClick={() => handleNewArea()}>New Project</button>

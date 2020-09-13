@@ -71,13 +71,15 @@ function ProjectView(props) {
         {headingsWithTasks.length
           ? headingsWithTasks.map(a => (
               <Heading
-              key={a.id}
+                key={a.id}
                 {...a}
                 selectedHeading={selectedHeading}
                 setSelectedHeading={setSelectedHeading}
               />
             ))
           : null}
+
+        <div>Show x logged item(s)</div>
       </div>
       <div className="actionables">
         <NewTask parent={projectID} heading={selectedHeading} />

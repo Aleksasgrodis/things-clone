@@ -11,14 +11,16 @@ function NewProject(props) {
   const handleNewProject = () => {
     const projectId = uuidv4(),
       createdAt = Date.now();
-      dispatch(addProject({
+    dispatch(
+      addProject({
         id: projectId,
         createdAt,
         parent,
-        title: 'New Project'
-      }))
-      history.push(`/project/${projectId}`)
-  };  
+        title: 'New Project',
+      }),
+    );
+    history.push(`/project/${projectId}`);
+  };
   return (
     <div>
       <button onClick={() => handleNewProject()}>New Project</button>

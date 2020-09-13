@@ -4,8 +4,8 @@ import { useDrag } from 'react-dnd';
 
 function AdvancedProjectListItem(props) {
   const [collectedProps, drag] = useDrag({
-    item: {id: props.id, type: 'project' }
-  })
+    item: { id: props.id, type: 'project' },
+  });
   return (
     <div className="item" ref={drag}>
       <input type="checkbox" className="checkbox" name="" id="" />

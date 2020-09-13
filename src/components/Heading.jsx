@@ -18,15 +18,15 @@ function Heading(props) {
 
   React.useEffect(() => {
     const handleClick = e => {
-      if(!node.current.contains(e.target) && e.target.type !== 'submit'){
-        props.setSelectedHeading(null)
+      if (!node.current.contains(e.target) && e.target.type !== 'submit') {
+        props.setSelectedHeading(null);
       }
-    }
-    document.addEventListener('mousedown', handleClick)
+    };
+    document.addEventListener('mousedown', handleClick);
     return () => {
-      document.removeEventListener('mousedown', handleClick)
-    }
-  }, [props])
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, [props]);
 
   return (
     <div ref={node}>
