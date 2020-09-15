@@ -344,14 +344,21 @@ code {
             margin-bottom: 15px;
             margin-top: 40px;
             font-weight: 800;
-            padding: 7px 9px;
             // margin-left: 9px;
-            border-bottom: 1px solid rgba(73, 155, 225, 0.7);
+            padding: 0px 9px;
             &.selected {
               border-color: transparent;
               background: rgb(26, 66, 114);
-
+              
               border-radius: 4px;
+              p {
+                border-color: transparent;
+              }
+            }
+            p {
+              padding-bottom: 7px;
+              padding-top: 7px;
+              border-bottom: 1px solid rgba(73, 155, 225, 0.7);
             }
             .input {
               background: none;
