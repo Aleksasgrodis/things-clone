@@ -1,7 +1,8 @@
+import { faCopy, faCopyright, faStickyNote } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editTodoCompletedStatus } from '../redux/actions';
-
 function TaskSmall(props) {
   const { title, id, selected, setSelected, drag } = props;
   const [active, setActive] = useState(false);
@@ -46,6 +47,7 @@ function TaskSmall(props) {
         <label htmlFor="task" className="title">
           {props.title}
         </label>
+        { props.notes ? <FontAwesomeIcon className="notes" icon={faCopy} /> : null}
       </div>
     </div>
   );

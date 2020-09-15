@@ -491,6 +491,12 @@ code {
       font-size: 0.9em;
       font-weight: 600;
     }
+    .notes {
+      color: gray;
+      background: transparent;
+      margin-left: 5px;
+      font-size: 1em;
+    }
     &.active {
       background: rgb(26, 66, 114);
     }
