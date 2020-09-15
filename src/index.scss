@@ -127,7 +127,7 @@ code {
       position: relative;
       border-right: 1px solid rgb(26, 27, 28);
       overflow: hidden;
-      background: rgb(32, 34, 35);
+      background: rgb(33, 36, 39);
 
       .list {
         // position: relative;
@@ -160,7 +160,9 @@ code {
             width: 100%;
             padding-top: 2px;
             padding-bottom: 2px;
+            min-width: 150px;
             &.item {
+              min-width: 150px;
               .parent-details {
                 display: flex;
                 justify-content: space-between;
@@ -248,7 +250,7 @@ code {
     .content-wrapper {
       height: 100%;
       width: 100%;
-      background: rgb(36, 38, 39);
+      background: rgb(36, 39, 42);
       overflow: hidden;
 
       .content {
@@ -288,53 +290,6 @@ code {
           .tasks {
             display: flex;
             flex-direction: column;
-            // .task {
-            //   display: flex;
-            //   flex-direction: column;
-            //   // height: 19px;
-            //   // overflow: hidden;
-            //   margin-bottom: 5px;
-            //   // &.selected {
-            //   //   height: auto;
-            //   //   overflow-y: visible;
-            //   //   background: rgba(255, 255, 255, 0.1);
-            //   //   padding: 10px 10px;
-            //   //   border-radius: 5px;
-            //   //   margin-bottom: 20px;
-            //   // }
-            //   .small {
-            //     color:red;
-            //   }
-            //   .large {
-            //     width: 100%;
-            //     display: flex;
-            //     flex-direction: column;
-            //     border: 1px solid red;
-            //     textarea {
-            //       width: 100%;
-            //       background: transparent;
-            //       color: white;
-            //       font-family: inherit;
-            //       border: none;
-            //       outline: none;
-            //     }
-            //     .actions {
-            //       align-self: flex-end;
-            //     }
-            //   }
-            //   input {
-            //     &[type="checkbox"] {
-            //       background: transparent;
-            //       border: 1px solid transparent;
-            //       &:checked {
-            //         background-color: transparent;
-            //       }
-            //       &:not(:checked) {
-            //         background-color: transparent;
-            //       }
-            //     }
-            //   }
-            // }
           }
           .heading {
             color: rgb(96, 170, 235);
