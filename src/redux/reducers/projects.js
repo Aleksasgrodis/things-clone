@@ -86,6 +86,17 @@ export default function (state = initialState, action) {
         return project;
       });
     }
+    // case Types.EDIT_HEADING: {
+    //   return state.map(project => {
+    //     if (project.id === action.parent) {
+    //       const index = project.headings.map(h => h.id).indexOf(action.id)
+    //       console.log(index)
+    //       project.headings[index].title = action.title;
+    //       return project;
+    //     }
+    //     return project;
+    //   });
+    // }
 
     default:
       return state;

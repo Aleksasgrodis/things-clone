@@ -79,6 +79,7 @@ function ProjectView(props) {
               <Heading
                 key={a.id}
                 {...a}
+                parent={projectID}
                 selectedHeading={selectedHeading}
                 setSelectedHeading={setSelectedHeading}
               />
