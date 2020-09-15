@@ -17,6 +17,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import AreaListItem from './sidebar/AreaListItem';
 import ProjectListItem from './sidebar/ProjectListItem';
+import NewListButton from './NewListButton';
 
 const selectAreas = state => (state ? state.areas : []);
 
@@ -84,9 +85,10 @@ function Sidebar() {
           ? areasWithChildren.map(a => <AreaListItem key={a.id} {...a} />)
           : null}
       </div>
-      <div className="actionables">
-        <NewProject />
-        <NewArea />
+      <div className="actionables dark">
+        {/* <NewProject />
+        <NewArea /> */}
+        <NewListButton />
       </div>
     </div>
   );

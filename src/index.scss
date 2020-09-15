@@ -1,7 +1,10 @@
 $sidebar-dark: rgb(33, 36, 39);
 $content-dark: rgb(36, 39, 42);
-
-
+$primary-blue: rgb(81, 173, 251);
+$layout-border: rgb(26, 27, 28);
+$primary-white: rgb(255, 255, 255);
+$secondary-white: rgb(169, 169, 169);
+$primary-gray: rgb(140, 140, 140);
 html,
 body,
 div,
@@ -129,10 +132,10 @@ code {
       width: 35%;
       height: 100%;
       position: relative;
-      border-right: 1px solid rgb(26, 27, 28);
+      border-right: 1px solid $layout-border;
       overflow: hidden;
       background: $sidebar-dark;
-
+      color: $secondary-white;
       .list {
         // position: relative;
         margin-top: 30px;
@@ -188,20 +191,19 @@ code {
           width: auto;
           font-size: 0.9em;
           font-weight: 600;
-
           border-radius: 4px;
           width: 100%;
           border: 2px solid transparent;
           &.droppable {
-            border: 2px solid rgb(118, 214, 255);
+            border: 2px solid $primary-blue;
           }
-
           &.item {
             svg {
               width: 25px;
               font-size: 1.1em;
+              color: $primary-gray;
               &.inbox {
-                color: rgb(0, 175, 244);
+                color: $primary-blue;
               }
               &.today {
                 color: rgb(255, 211, 59);
@@ -240,16 +242,16 @@ code {
           }
         }
       }
-      .actionables {
-        border-top: 1px solid rgb(26, 27, 28);
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 35px;
-        background: $sidebar-dark;
-        display: flex;
-        justify-content: space-between;
-      }
+      // .actionables {
+      //   border-top: 1px solid rgb(26, 27, 28);
+      //   position: absolute;
+      //   bottom: 0;
+      //   width: 100%;
+      //   height: 35px;
+      //   background: $sidebar-dark;
+      //   display: flex;
+      //   justify-content: space-between;
+      // }
     }
     .content-wrapper {
       height: 100%;
@@ -296,7 +298,7 @@ code {
             flex-direction: column;
           }
           .heading {
-            color: rgb(96, 170, 235);
+            color: $primary-blue;
             width: 100%;
             font-size: 0.9em;
             padding-bottom: 5px;
@@ -308,7 +310,7 @@ code {
             &.selected {
               border-color: transparent;
               background: rgb(26, 66, 114);
-              
+
               border-radius: 4px;
               p {
                 border-color: transparent;
@@ -328,7 +330,7 @@ code {
               outline: none;
               font-size: 1em;
               font-family: inherit;
-              color: rgb(96, 170, 235);
+              color: $primary-blue;
               font-weight: 800;
             }
           }
@@ -414,34 +416,6 @@ code {
             flex-direction: column;
           }
         }
-        .actionables {
-          border-top: 1px solid rgb(26, 27, 28);
-          position: absolute;
-          bottom: 30px;
-          width: 100%;
-          height: 35px;
-          background: $content-dark;
-          display: flex;
-          justify-content: space-evenly;
-          align-items: center;
-          .action {
-            color: rgb(157, 157, 157);
-            min-width: 70px;
-            max-width: 100px;
-            font-size: 0.9em;
-            height: 80%;
-            border-radius: 4px;
-            background: transparent;
-            border: 1px solid transparent;
-            outline: none;
-            &:hover {
-              border: 1px solid rgb(60, 60, 60);
-            }
-            &:active {
-              background: rgb(60, 60, 60);
-            }
-          }
-        }
       }
     }
   }
@@ -470,7 +444,7 @@ code {
       display: flex;
       align-items: center;
       .date {
-        color: rgb(76, 170, 252);
+        color: $primary-blue;
         font-weight: 600;
         font-size: 0.75em;
         padding-left: 5px;
@@ -534,5 +508,37 @@ code {
 }
 
 .actionables {
-  color: red;
+  border-top: 1px solid $layout-border;
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  background: $content-dark;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  &.dark {
+    background: $sidebar-dark;
+    .action {
+      font-size: 0.8em;
+      color: $secondary-white;
+      font-weight: 600;
+    }
+  }
+  .action {
+    color: $primary-gray;
+    min-width: 70px;
+    max-width: 100px;
+    font-size: 0.9em;
+    height: 80%;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid transparent;
+    outline: none;
+    &:hover {
+      border: 1px solid rgb(60, 60, 60);
+    }
+    &:active {
+      background: rgb(60, 60, 60);
+    }
+  }
 }
