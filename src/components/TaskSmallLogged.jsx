@@ -1,17 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editTodoCompletedStatus } from '../redux/actions';
 import moment from 'moment';
 import onOutsideClick from './onOutsideClick';
 
-function TaskSmallLogged({self, target,...props}) {
+function TaskSmallLogged({ self, target, ...props }) {
   const { title, id, selected, setSelected, drag } = props;
   const [active, setActive] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (self && target && !self.contains(target)) setActive(false)
-  }, [self, target])
+    if (self && target && !self.contains(target)) setActive(false);
+  }, [self, target]);
 
   return (
     <div>
@@ -36,17 +36,20 @@ function TaskSmallLogged({self, target,...props}) {
           name="task"
           id=""
         />
-        <span className="date">{moment(props.completedAt).format('DD MMM')}</span>
+        <span className="date">
+          {moment(props.completedAt).format('DD MMM')}
+        </span>
         <div className="text-details">
-        <label htmlFor="task" className="title">
-          {props.title}
-        </label>
-        { props.headingTitle && <span className="header">{props.headingTitle}</span>}
+          <label htmlFor="task" className="title">
+            {props.title}
+          </label>
+          {props.headingTitle && (
+            <span className="header">{props.headingTitle}</span>
+          )}
         </div>
-        
       </div>
     </div>
   );
 }
 
-export default onOutsideClick(TaskSmallLogged)
+export default onOutsideClick(TaskSmallLogged);

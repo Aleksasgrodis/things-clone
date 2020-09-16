@@ -18,7 +18,7 @@ function AdvancedProjectListItem(props) {
   const projectTasks = useSelector(state =>
     selectTasksOfProject(state, props.id),
   );
-  const activeTasks = projectTasks.filter(t => !t.completed).length
+  const activeTasks = projectTasks.filter(t => !t.completed).length;
   return (
     <div className="item" ref={drag}>
       <input type="checkbox" className="checkbox" name="" id="" />

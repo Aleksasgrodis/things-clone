@@ -8,10 +8,7 @@ import {
 import onOutsideClick from './onOutsideClick';
 import TaskActionBar from './TaskActionBar';
 
-function TaskLarge({
-  self, target, setSelected,
-  ...props
-}) {
+function TaskLarge({ self, target, setSelected, ...props }) {
   const dispatch = useDispatch();
 
   useEffect(() => {

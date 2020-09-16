@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { editTodoHeading } from '../redux/actions';
 import onOutsideClick from './onOutsideClick';
 
-function Heading({ target, self,setSelectedHeading, ...props }) {
+function Heading({ target, self, setSelectedHeading, ...props }) {
   const [, drop] = useDrop({
     accept: [ItemTypes.TASK],
     drop: item => changeTaskHeader(item),

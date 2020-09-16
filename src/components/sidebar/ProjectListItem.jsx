@@ -43,14 +43,14 @@ function ProjectListItem(props) {
         to={`/project/${props.id}`}
       >
         <div className="progress-indicator small">
-            <CircularProgressbar
-              value={percentage}
-              strokeWidth={50}
-              styles={buildStyles({
-                strokeLinecap: 'butt',
-              })}
-            />
-          </div>
+          <CircularProgressbar
+            value={percentage}
+            strokeWidth={50}
+            styles={buildStyles({
+              strokeLinecap: 'butt',
+            })}
+          />
+        </div>
         <span className="title">{props.title}</span>
       </NavLink>
     </div>

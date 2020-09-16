@@ -1,6 +1,6 @@
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editTodoCompletedStatus } from '../redux/actions';
 import onOutsideClick from './onOutsideClick';
@@ -8,7 +8,7 @@ function TaskSmall({ target, self, ...props }) {
   const { title, id, selected, setSelected, drag } = props;
   const [active, setActive] = useState(false);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     if (self && target && !self.contains(target)) {
       setActive(false);
