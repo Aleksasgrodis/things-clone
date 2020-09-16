@@ -175,14 +175,23 @@ code {
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
+                padding-right: 5px;
                 .text {
                 }
                 .chevron {
                   color: gray;
                   font-weight: 100;
                   font-size: small;
+                  visibility: hidden;
+
+                }
+                &:hover {
+                  .chevron {
+                    visibility: visible;
+                  }
                 }
               }
+              
             }
           }
         }
@@ -561,6 +570,7 @@ code {
     border: 1px solid $primary-gray;
     border-radius: 50%;
     padding: 1px;
+    margin-left: 3px;
     .CircularProgressbar-path {
       stroke: $primary-gray;
     }
