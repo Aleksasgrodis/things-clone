@@ -7,13 +7,8 @@ import onOutsideClick from './onOutsideClick';
 function TaskSmall({ target, self, ...props }) {
   const { title, id, selected, setSelected, drag } = props;
   const [active, setActive] = useState(false);
-  // const node = useRef();
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   setActive(false);
-  //   setClickedOutside(false)
-  // }, [setClickedOutside, clickedOutside])
+  
   useEffect(() => {
     if (self && target && !self.contains(target)) {
       setActive(false);

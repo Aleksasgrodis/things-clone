@@ -4,11 +4,10 @@ import { useDrop } from 'react-dnd';
 import Task from './Task';
 import { useDispatch } from 'react-redux';
 import { editTodoHeading } from '../redux/actions';
-import withOutsideClick from './withOutsideClick';
 import onOutsideClick from './onOutsideClick';
 
 function Heading({ target, self,setSelectedHeading, ...props }) {
-  const [collectedProps, drop] = useDrop({
+  const [, drop] = useDrop({
     accept: [ItemTypes.TASK],
     drop: item => changeTaskHeader(item),
   });
@@ -19,25 +18,6 @@ function Heading({ target, self,setSelectedHeading, ...props }) {
       editTodoHeading({ id, heading: props.id, headingTitle: props.title }),
     );
   };
-  // React.useEffect(() => {
-  //   const handleClick = e => {
-  //     if (!node.current.contains(e.target) && e.target.type !== 'submit') {
-  //       props.setSelectedHeading(null);
-  //       setEditMode(false);
-  //     }
-  //   };
-  //   document.addEventListener('mousedown', handleClick);
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClick);
-  //   };
-  // }, [props.setSelectedHeading]);
-
-  // useEffect(() => {
-  //   setSelectedHeading(null);
-  //   setEditMode(false);
-  //   setClickedOutside(false);
-  // }, [setClickedOutside, clickedOutside, setSelectedHeading]);
-
   useEffect(() => {
     if (self && target && !self.contains(target) && target.type !== 'submit') {
       setSelectedHeading(null);
