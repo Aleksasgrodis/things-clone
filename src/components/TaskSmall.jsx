@@ -3,26 +3,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editTodoCompletedStatus } from '../redux/actions';
-function TaskSmall(props) {
+import onOutsideClick from './onOutsideClick';
+function TaskSmall({ target, self, ...props }) {
   const { title, id, selected, setSelected, drag } = props;
   const [active, setActive] = useState(false);
-  const node = useRef();
+  // const node = useRef();
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   setActive(false);
+  //   setClickedOutside(false)
+  // }, [setClickedOutside, clickedOutside])
   useEffect(() => {
-    const handleClick = e => {
-      if (!node.current.contains(e.target)) {
-        setActive(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClick);
-    return () => {
-      document.removeEventListener('mousedown', handleClick);
-    };
-  }, []);
+    if (self && target && !self.contains(target)) {
+      setActive(false);
+    }
+  }, [self, target]);
 
   return (
-    <div ref={node}>
+    <div>
       <div
         className={`small ${active ? 'active' : ''}`}
         ref={drag}
@@ -47,10 +46,12 @@ function TaskSmall(props) {
         <label htmlFor="task" className="title">
           {props.title}
         </label>
-        { props.notes ? <FontAwesomeIcon className="notes" icon={faCopy} /> : null}
+        {props.notes ? (
+          <FontAwesomeIcon className="notes" icon={faCopy} />
+        ) : null}
       </div>
     </div>
   );
 }
 
-export default TaskSmall;
+export default onOutsideClick(TaskSmall);

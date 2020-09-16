@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import withOutsideClick from './withOutsideClick';
+import onOutsideClick from './onOutsideClick';
 
-function Test({setClickedOutside, clickedOutside, ...props}) {
+function Test({self, target, ...props}) {
   const [selected, setSelected] = useState(false)
   useEffect(() => {
-    setSelected(false);
-    setClickedOutside(false)
-  }, [setClickedOutside, clickedOutside])
+    if(self && !self.contains(target)) setSelected(false)
+  }, [target, self])
   return (
     <div style={{ color: selected ? "red" : 'white'}} onClick={() => setSelected(true)}>
       hey, test!
@@ -14,5 +13,5 @@ function Test({setClickedOutside, clickedOutside, ...props}) {
   )
 }
 
-export default withOutsideClick(Test)
+export default onOutsideClick(Test)
 
