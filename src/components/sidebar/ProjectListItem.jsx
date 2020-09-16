@@ -6,6 +6,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import { ItemTypes } from '../Constants';
 import { useDispatch } from 'react-redux';
 import { editTodo } from '../../redux/actions';
+import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 
 function ProjectListItem(props) {
   const [collectedProps, drag] = useDrag({
@@ -30,7 +31,15 @@ function ProjectListItem(props) {
         className={`item thin ${isActive ? 'droppable' : null}`}
         to={`/project/${props.id}`}
       >
-        <FontAwesomeIcon icon={faCircle} />
+        <div className="progress-indicator small">
+            <CircularProgressbar
+              value={75}
+              strokeWidth={50}
+              styles={buildStyles({
+                strokeLinecap: 'butt',
+              })}
+            />
+          </div>
         <span className="title">{props.title}</span>
       </NavLink>
     </div>
