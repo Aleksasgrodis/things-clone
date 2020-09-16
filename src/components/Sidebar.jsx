@@ -1,7 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import NewArea from './NewArea';
-import NewProject from './NewProject';
 import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
