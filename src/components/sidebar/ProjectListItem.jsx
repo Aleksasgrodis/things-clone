@@ -1,12 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { useDrag, useDrop } from 'react-dnd';
 import { ItemTypes } from '../Constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { editTodo } from '../../redux/actions';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import { createSelector } from 'reselect';
+
+const selectTasksOfProject = createSelector(
+  state => state.tasks,
+  (_, projectID) => projectID,
+  (tasks, projectID) => tasks.filter(({ parent }) => parent === projectID),
+);
 
 function ProjectListItem(props) {
   const [collectedProps, drag] = useDrag({
@@ -23,6 +28,12 @@ function ProjectListItem(props) {
   const changeItemParent = ({ id }) => {
     dispatch(editTodo({ id, parent: props.id }));
   };
+
+  const projectTasks = useSelector(state =>
+    selectTasksOfProject(state, props.id),
+  );
+  const completedTasks = [...projectTasks].filter(t => t.completed);
+  const percentage = (completedTasks.length * 100) / projectTasks.length;
   return (
     <div ref={drop} className="drop-wrapper">
       <NavLink
@@ -33,7 +44,7 @@ function ProjectListItem(props) {
       >
         <div className="progress-indicator small">
             <CircularProgressbar
-              value={75}
+              value={percentage}
               strokeWidth={50}
               styles={buildStyles({
                 strokeLinecap: 'butt',
