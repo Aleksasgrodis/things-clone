@@ -1,15 +1,17 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
+import onOutsideClick from './onOutsideClick';
 
-export class Test extends Component {
-  
-  render() {
-    console.log(this);
-    return (
-      <div>
-        hello
-      </div>
-    )
-  }
+function Test({self, target, ...props}) {
+  const [selected, setSelected] = useState(false)
+  useEffect(() => {
+    if(self && !self.contains(target)) setSelected(false)
+  }, [target, self])
+  return (
+    <div style={{ color: selected ? "red" : 'white'}} onClick={() => setSelected(true)}>
+      hey, test!
+    </div>
+  )
 }
 
-export default Test
+export default onOutsideClick(Test)
+

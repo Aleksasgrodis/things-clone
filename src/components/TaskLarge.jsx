@@ -1,29 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   editTodoCompletedStatus,
   editTodoNotes,
   editTodoTitle,
 } from '../redux/actions';
+import onOutsideClick from './onOutsideClick';
 import TaskActionBar from './TaskActionBar';
 
-function TaskLarge(props) {
+function TaskLarge({ self, target, setSelected, ...props }) {
   const dispatch = useDispatch();
-  const node = React.useRef();
 
-  React.useEffect(() => {
-    const handleClick = e => {
-      if (!node.current.contains(e.target)) {
-        props.setSelected(!props.setSelected);
-      }
-    };
-    document.addEventListener('mousedown', handleClick);
-    return () => {
-      document.removeEventListener('mousedown', handleClick);
-    };
-  }, [props]);
+  useEffect(() => {
+    if (self && target && !self.contains(target)) {
+      setSelected(false);
+    }
+  }, [target, self, setSelected]);
+
   return (
-    <div className="large" ref={node}>
+    <div className="large">
       <input
         type="checkbox"
         className="checkbox"
@@ -59,4 +54,4 @@ function TaskLarge(props) {
   );
 }
 
-export default TaskLarge;
+export default onOutsideClick(TaskLarge);

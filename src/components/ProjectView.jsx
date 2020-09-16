@@ -58,26 +58,25 @@ function ProjectView(props) {
       <div className="project">
         <header>
           <div className="header">
-
-          <div className="progress-indicator large">
-            <CircularProgressbar
-              value={percentage}
-              strokeWidth={50}
-              styles={buildStyles({
-                strokeLinecap: 'butt',
-              })}
+            <div className="progress-indicator large">
+              <CircularProgressbar
+                value={percentage}
+                strokeWidth={50}
+                styles={buildStyles({
+                  strokeLinecap: 'butt',
+                })}
+              />
+            </div>
+            <input
+              className="input-title"
+              type="text"
+              name="title"
+              placeholder="New Project"
+              value={title}
+              onChange={e =>
+                dispatch(editProject({ id: projectID, title: e.target.value }))
+              }
             />
-          </div>
-          <input
-            className="input-title"
-            type="text"
-            name="title"
-            placeholder="New Project"
-            value={title}
-            onChange={e =>
-              dispatch(editProject({ id: projectID, title: e.target.value }))
-            }
-          />
           </div>
           <textarea
             className="input-notes"
