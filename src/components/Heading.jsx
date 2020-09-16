@@ -3,7 +3,7 @@ import { ItemTypes } from './Constants';
 import { useDrop } from 'react-dnd';
 import Task from './Task';
 import { useDispatch } from 'react-redux';
-import { editHeading, editTodoHeading } from '../redux/actions';
+import { editTodoHeading } from '../redux/actions';
 
 function Heading(props) {
   const [collectedProps, drop] = useDrop({

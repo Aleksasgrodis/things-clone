@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faArrowDown,
-  faArrowRight,
   faBoxOpen,
-  faChevronCircleDown,
   faChevronDown,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
