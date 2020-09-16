@@ -183,7 +183,6 @@ code {
                   font-weight: 100;
                   font-size: small;
                   visibility: hidden;
-
                 }
                 &:hover {
                   .chevron {
@@ -191,7 +190,6 @@ code {
                   }
                 }
               }
-              
             }
           }
         }
@@ -516,8 +514,30 @@ code {
         font-size: 0.9em;
         font-weight: 600;
       }
-      .actions {
+      .actionbar {
         align-self: flex-end;
+        margin-top: 5px;
+        align-items: center;
+        .action {
+          color: $secondary-white;
+          margin-right: 5px;
+          font-size: 1em;
+          width: 30px;
+          padding: 4px;
+          border-radius: 4px;
+          background: transparent;
+          border: 1px solid transparent;
+          outline: none;
+          &:hover {
+            border: 1px solid $primary-gray;
+          }
+          &:active {
+            background: rgb(60, 60, 60);
+          }
+          svg {
+            pointer-events: none;
+          }
+        }
       }
     }
   }

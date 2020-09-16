@@ -5,6 +5,7 @@ import {
   editTodoNotes,
   editTodoTitle,
 } from '../redux/actions';
+import TaskActionBar from './TaskActionBar';
 
 function TaskLarge(props) {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ function TaskLarge(props) {
           }
           rows="3"
         />
-        <div className="actions">buttons</div>
+        <TaskActionBar />
       </div>
     </div>
   );
