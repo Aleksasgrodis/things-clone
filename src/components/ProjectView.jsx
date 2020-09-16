@@ -10,6 +10,7 @@ import Heading from './Heading';
 import LoggedItems from './LoggedItems';
 import NewSearch from './NewSearch';
 import NewMove from './NewMove';
+import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 const selectProjectWithId = createSelector(
   state => state.projects,
   (_, projectID) => projectID,
@@ -24,7 +25,10 @@ const selectTasksOfProject = createSelector(
 
 function ProjectView(props) {
   const { projectID } = useParams();
-  const [selectedHeading, setSelectedHeading] = useState({id: null, title: null});
+  const [selectedHeading, setSelectedHeading] = useState({
+    id: null,
+    title: null,
+  });
   const [showLogged, setShowLogged] = useState(false);
   const dispatch = useDispatch();
   const projectTasks = useSelector(state =>
@@ -38,16 +42,32 @@ function ProjectView(props) {
   );
   const headingsWithTasks = [...headings].map(heading => ({
     ...heading,
-    tasks: projectTasks.filter(task => task.heading === heading.id && !task.completed),
+    tasks: projectTasks.filter(
+      task => task.heading === heading.id && !task.completed,
+    ),
   }));
   const completedTasks = [...projectTasks].filter(t => t.completed);
   useEffect(() => {
     setSelectedHeading(null);
   }, [projectID]);
+
+  const percentage = (completedTasks.length * 100) / projectTasks.length;
+
   return (
     <div className="content">
       <div className="project">
         <header>
+          <div className="header">
+
+          <div className="progress-indicator large">
+            <CircularProgressbar
+              value={percentage}
+              strokeWidth={50}
+              styles={buildStyles({
+                strokeLinecap: 'butt',
+              })}
+            />
+          </div>
           <input
             className="input-title"
             type="text"
@@ -58,6 +78,7 @@ function ProjectView(props) {
               dispatch(editProject({ id: projectID, title: e.target.value }))
             }
           />
+          </div>
           <textarea
             className="input-notes"
             placeholder="Notes"
@@ -68,7 +89,6 @@ function ProjectView(props) {
           />
         </header>
         <span>{tags}</span>
-
         <div className="tasks">
           {standaloneTasks.map(task => (
             <Task key={task.id} {...task} />
