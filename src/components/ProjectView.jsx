@@ -11,6 +11,7 @@ import LoggedItems from './LoggedItems';
 import NewSearch from './NewSearch';
 import NewMove from './NewMove';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import Test from './Test';
 const selectProjectWithId = createSelector(
   state => state.projects,
   (_, projectID) => projectID,
