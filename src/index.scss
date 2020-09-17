@@ -618,3 +618,50 @@ code {
 .CircularProgressbar-background {
   fill: green;
 }
+
+.content {
+  .project {
+    &.default {
+      header {
+        display: flex;
+        align-items: center;
+        .title {
+          font-weight: 700;
+          margin-left: 5px;
+          font-size: 1.5em;
+        }
+        &.with-margin {
+          margin-bottom: 50px;
+        }
+      }
+    }
+  }
+}
+
+.icon {
+  &.inbox {
+    color: $primary-blue;
+  }
+  &.today {
+    color: rgb(255, 211, 59);
+  }
+  &.upcoming {
+    color: rgb(255, 52, 108);
+  }
+  &.anytime {
+    color: rgb(45, 175, 165);
+  }
+  &.someday {
+    color: rgb(213, 198, 146);
+  }
+  &.logbook {
+    color: rgb(45, 189, 102);
+  }
+  &.trash {
+    color: rgb(194, 200, 205);
+  }
+  &.large {
+    font-size: 1.6em;
+    width: 30px;
+  }
+}
