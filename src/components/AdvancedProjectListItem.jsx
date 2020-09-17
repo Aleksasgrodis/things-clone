@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDrag } from 'react-dnd';
 import { createSelector } from 'reselect';
 import { useSelector } from 'react-redux';
+import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 
 const selectTasksOfProject = createSelector(
   state => state.tasks,
@@ -11,7 +12,7 @@ const selectTasksOfProject = createSelector(
 );
 
 function AdvancedProjectListItem(props) {
-  const [collectedProps, drag] = useDrag({
+  const [, drag] = useDrag({
     item: { id: props.id, type: 'project' },
   });
 
@@ -19,9 +20,19 @@ function AdvancedProjectListItem(props) {
     selectTasksOfProject(state, props.id),
   );
   const activeTasks = projectTasks.filter(t => !t.completed).length;
+  const completedTasks = [...projectTasks].filter(t => t.completed);
+  const percentage = (completedTasks.length * 100) / projectTasks.length 
   return (
     <div className="item" ref={drag}>
-      <input type="checkbox" className="checkbox" name="" id="" />
+      <div className="progress-indicator small colored">
+          <CircularProgressbar
+            value={percentage}
+            strokeWidth={50}
+            styles={buildStyles({
+              strokeLinecap: 'butt',
+            })}
+          />
+        </div>
       <Link to={`/project/${props.id}`} className="title">
         {props.title}
       </Link>

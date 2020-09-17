@@ -394,8 +394,8 @@ code {
               background: transparent;
               border: none;
               outline: none;
-              margin-left: 5px;
-              font-size: 1.5em;
+              margin-left: 10px;
+              font-size: 1.4em;
               font-weight: 600;
             }
           }
@@ -413,6 +413,7 @@ code {
                 color: white;
                 font-weight: 700;
                 font-size: 0.9em;
+                margin-left: 5px;
               }
               .task-count {
                 margin-left: 10px;
@@ -599,7 +600,16 @@ code {
       width: 11px;
       height: 11px;
     }
+    &.colored {
+      .CircularProgressbar-path {
+        stroke: $primary-blue;
+      }
+      svg {
+        border: 1px solid $primary-blue;
+      }
+    }
   }
+
   &.large {
     width: 15px;
     height: 15px;
