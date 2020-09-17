@@ -9,6 +9,8 @@ import Task from './Task';
 import AdvancedProjectListItem from './AdvancedProjectListItem';
 import NewSearch from './NewSearch';
 import NewMove from './NewMove';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBoxOpen } from '@fortawesome/free-solid-svg-icons';
 const selectAreaWithId = createSelector(
   state => state.areas,
   (_, areaID) => areaID,
@@ -38,6 +40,7 @@ function AreaView(props) {
     <div className="content">
       <div className="area">
         <header>
+          <FontAwesomeIcon icon={faBoxOpen} className="icon large area-icon" />
           <input
             className="input-title"
             type="text"

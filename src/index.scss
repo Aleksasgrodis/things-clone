@@ -140,8 +140,8 @@ code {
         margin-top: 30px;
         padding-top: 20px;
         display: flex;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
         flex-direction: column;
         overflow-y: scroll;
         width: auto;
@@ -387,13 +387,16 @@ code {
           header {
             margin-top: 40px;
             margin-bottom: 40px;
+            display: flex;
+            align-items: center;
             .input-title {
               color: white;
               background: transparent;
               border: none;
               outline: none;
-              font-size: 2em;
-              font-weight: 500;
+              margin-left: 10px;
+              font-size: 1.4em;
+              font-weight: 600;
             }
           }
           .projects {
@@ -401,6 +404,7 @@ code {
             .item {
               display: flex;
               align-items: center;
+              margin-bottom: 10px;
               .checkbox {
                 width: 25px;
                 height: 15px;
@@ -410,6 +414,7 @@ code {
                 color: white;
                 font-weight: 700;
                 font-size: 0.9em;
+                margin-left: 5px;
               }
               .task-count {
                 margin-left: 10px;
@@ -596,7 +601,16 @@ code {
       width: 11px;
       height: 11px;
     }
+    &.colored {
+      .CircularProgressbar-path {
+        stroke: $primary-blue;
+      }
+      svg {
+        border: 1px solid $primary-blue;
+      }
+    }
   }
+
   &.large {
     width: 15px;
     height: 15px;
@@ -617,4 +631,54 @@ code {
 }
 .CircularProgressbar-background {
   fill: green;
+}
+
+.content {
+  .project {
+    &.default {
+      header {
+        display: flex;
+        align-items: center;
+        .title {
+          font-weight: 700;
+          margin-left: 5px;
+          font-size: 1.5em;
+        }
+        &.with-margin {
+          margin-bottom: 50px;
+        }
+      }
+    }
+  }
+}
+
+.icon {
+  &.inbox {
+    color: $primary-blue;
+  }
+  &.today {
+    color: rgb(255, 211, 59);
+  }
+  &.upcoming {
+    color: rgb(255, 52, 108);
+  }
+  &.anytime {
+    color: rgb(45, 175, 165);
+  }
+  &.someday {
+    color: rgb(213, 198, 146);
+  }
+  &.logbook {
+    color: rgb(45, 189, 102);
+  }
+  &.trash {
+    color: rgb(194, 200, 205);
+  }
+  &.area-icon {
+    color: rgb(113, 196, 170);
+  }
+  &.large {
+    font-size: 1.6em;
+    width: 30px;
+  }
 }
