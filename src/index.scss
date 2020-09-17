@@ -387,13 +387,16 @@ code {
           header {
             margin-top: 40px;
             margin-bottom: 40px;
+            display: flex;
+            align-items: center;
             .input-title {
               color: white;
               background: transparent;
               border: none;
               outline: none;
-              font-size: 2em;
-              font-weight: 500;
+              margin-left: 5px;
+              font-size: 1.5em;
+              font-weight: 600;
             }
           }
           .projects {
@@ -659,6 +662,9 @@ code {
   }
   &.trash {
     color: rgb(194, 200, 205);
+  }
+  &.area-icon {
+    color: rgb(113, 196, 170);
   }
   &.large {
     font-size: 1.6em;
