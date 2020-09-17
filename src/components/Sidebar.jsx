@@ -40,38 +40,45 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="list">
-        <NavLink exact activeClassName="active" className="spacing item" to="/">
-          <FontAwesomeIcon className="inbox" icon={faInbox} />
-          <span className="title">Inbox</span>
-        </NavLink>
-        <NavLink activeClassName="active" className="item" to="/today">
-          <FontAwesomeIcon className="today" icon={faStar} />
-          <span className="title">Today</span>
-        </NavLink>
-        <NavLink activeClassName="active" className="item" to="/upcoming">
-          <FontAwesomeIcon className="upcoming" icon={faCalendarAlt} />
-          <span className="title">Upcoming</span>
-        </NavLink>
-        <NavLink activeClassName="active" className="item" to="/anytime">
-          <FontAwesomeIcon className="anytime" icon={faLayerGroup} />
-          <span className="title">Anytime</span>
-        </NavLink>
-        <NavLink
-          activeClassName="active"
-          className="spacing item"
-          to="/someday"
-        >
-          <FontAwesomeIcon className="someday" icon={faArchive} />
-          <span className="title">Someday</span>
-        </NavLink>
-        <NavLink activeClassName="active" className="item" to="/logbook">
-          <FontAwesomeIcon className="logbook" icon={faBook} />
-          <span className="title">Logbook</span>
-        </NavLink>
-        <NavLink activeClassName="active" className="item" to="/trash">
-          <FontAwesomeIcon className="trash" icon={faTrash} />
-          <span className="title">Trash</span>
-        </NavLink>
+        <div className="defaults">
+          <NavLink
+            exact
+            activeClassName="active"
+            className="spacing item"
+            to="/"
+          >
+            <FontAwesomeIcon className="inbox" icon={faInbox} />
+            <span className="title">Inbox</span>
+          </NavLink>
+          <NavLink activeClassName="active" className="item" to="/today">
+            <FontAwesomeIcon className="today" icon={faStar} />
+            <span className="title">Today</span>
+          </NavLink>
+          <NavLink activeClassName="active" className="item" to="/upcoming">
+            <FontAwesomeIcon className="upcoming" icon={faCalendarAlt} />
+            <span className="title">Upcoming</span>
+          </NavLink>
+          <NavLink activeClassName="active" className="item" to="/anytime">
+            <FontAwesomeIcon className="anytime" icon={faLayerGroup} />
+            <span className="title">Anytime</span>
+          </NavLink>
+          <NavLink
+            activeClassName="active"
+            className="spacing item"
+            to="/someday"
+          >
+            <FontAwesomeIcon className="someday" icon={faArchive} />
+            <span className="title">Someday</span>
+          </NavLink>
+          <NavLink activeClassName="active" className="item" to="/logbook">
+            <FontAwesomeIcon className="logbook" icon={faBook} />
+            <span className="title">Logbook</span>
+          </NavLink>
+          <NavLink activeClassName="active" className="item" to="/trash">
+            <FontAwesomeIcon className="trash" icon={faTrash} />
+            <span className="title">Trash</span>
+          </NavLink>
+        </div>
         <div className="project-bundle">
           {projects && projectsWithoutParents && projectsWithoutParents.length
             ? projectsWithoutParents.map(p => (

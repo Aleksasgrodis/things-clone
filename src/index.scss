@@ -125,7 +125,7 @@ code {
     width: 80%;
     height: 75%;
     display: flex;
-    color: #fff;
+    color: $primary-white;
     border-radius: 7px;
     overflow: hidden;
     .sidebar {
@@ -137,7 +137,6 @@ code {
       background: $sidebar-dark;
       color: $secondary-white;
       .list {
-        // position: relative;
         margin-top: 30px;
         padding-top: 20px;
         display: flex;
@@ -150,6 +149,37 @@ code {
         max-height: calc(100% - 85px);
         white-space: nowrap;
         text-overflow: ellipsis;
+        .defaults {
+          a {
+            svg {
+              width: 25px;
+              &.inbox {
+                color: $primary-blue;
+              }
+              &.today {
+                color: rgb(255, 211, 59);
+              }
+              &.upcoming {
+                color: rgb(255, 52, 108);
+              }
+              &.anytime {
+                color: rgb(45, 175, 165);
+              }
+              &.someday {
+                color: rgb(213, 198, 146);
+              }
+              &.logbook {
+                color: rgb(45, 189, 102);
+              }
+              &.trash {
+                color: rgb(194, 200, 205);
+              }
+            }
+            .title {
+            }
+          }
+        }
+
         &::-webkit-scrollbar {
           width: 0 !important;
         }
@@ -169,14 +199,18 @@ code {
             padding-bottom: 2px;
             min-width: 150px;
             &.item {
-              min-width: 150px;
+              // min-width: 150px;
               .parent-details {
+                flex-basis: 100%;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
                 padding-right: 5px;
                 .text {
+                  svg {
+                    width: 25px;
+                  }
                 }
                 .chevron {
                   color: gray;
@@ -212,27 +246,6 @@ code {
               // width: 25px;
               font-size: 1.1em;
               color: $primary-gray;
-              &.inbox {
-                color: $primary-blue;
-              }
-              &.today {
-                color: rgb(255, 211, 59);
-              }
-              &.upcoming {
-                color: rgb(255, 52, 108);
-              }
-              &.anytime {
-                color: rgb(45, 175, 165);
-              }
-              &.someday {
-                color: rgb(213, 198, 146);
-              }
-              &.logbook {
-                color: rgb(45, 189, 102);
-              }
-              &.trash {
-                color: rgb(194, 200, 205);
-              }
             }
             .title {
               margin-left: 3px;
@@ -584,15 +597,20 @@ code {
 
 .progress-indicator {
   &.small {
-    width: 10px;
-    height: 10px;
-    line-height: 10px;
-    border: 1px solid $primary-gray;
-    border-radius: 50%;
-    padding: 1px;
-    margin-left: 3px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .CircularProgressbar-path {
       stroke: $primary-gray;
+    }
+    svg {
+      line-height: 10px;
+      border-radius: 50%;
+      padding: 1px;
+      border: 1px solid $primary-gray;
+      width: 11px;
+      height: 11px;
     }
   }
   &.large {
